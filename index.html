@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festival Pewma Antü — Encuentro de las Estrellas</title>
+  <meta name="description" content="Festival Nacional e Internacional de Folklore Pewma Antü: música, danza tradicional y hermandad cultural. 14 al 26 de enero de 2027." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Festival Pewma Antü — Encuentro de las Estrellas" />
+  <meta property="og:description" content="Un espacio de encuentro, intercambio cultural y celebración de nuestras raíces a través de la música, la danza y la tradición de los pueblos." />
+  <meta property="og:type" content="website" />
+  <!-- TODO: idealmente una imagen recortada a 1200x630 para redes sociales -->
+  <meta property="og:image" content="img/danzante-mascara.jpg" />
+
+  <!-- Favicon: logo del festival -->
+  <link rel="icon" href="img/logo.jpg" />
+
+  <!-- Google Fonts: Playfair Display para títulos, Poppins para texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css?v=5" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__container">
+      <a href="#inicio" class="navbar__brand" aria-label="Pewma Antü, ir al inicio">
+        <img src="img/logo.jpg" alt="Logo del Festival Pewma Antü" class="navbar__logo-icon" width="46" height="46" />
+        <span class="navbar__brand-text">
+          <span class="navbar__brand-title">Pewma Antü</span>
+          <span class="navbar__brand-sub">— Encuentro de las Estrellas —</span>
+        </span>
+      </a>
+
+      <nav class="navbar__nav" id="navMenu" aria-label="Navegación principal">
+        <a href="#inicio" class="navbar__link navbar__link--active">Inicio</a>
+
+        <div class="navbar__item navbar__item--dropdown">
+          <button class="navbar__link navbar__dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            El Festival
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="navbar__dropdown-menu">
+            <a href="#sobre">Sobre el festival</a>
+            <a href="#vision">La visión</a>
+            <a href="#equipo">Nuestro equipo</a>
+            <a href="#participantes">Países participantes</a>
+            <a href="#himno">El himno</a>
+          </div>
+        </div>
+
+        <div class="navbar__item navbar__item--dropdown">
+          <button class="navbar__link navbar__dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Programación
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="navbar__dropdown-menu">
+            <a href="#programacion">Próxima programación</a>
+            <a href="#programacion">Calendario completo</a>
+          </div>
+        </div>
+
+        <a href="#agrupaciones" class="navbar__link">Agrupaciones</a>
+
+        <div class="navbar__item navbar__item--dropdown">
+          <button class="navbar__link navbar__dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Galería
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="navbar__dropdown-menu">
+            <a href="#galeria">Fotos</a>
+            <a href="https://youtube.com/@fnipewmantu" target="_blank" rel="noopener">Videos</a>
+          </div>
+        </div>
+
+        <a href="#noticias" class="navbar__link">Noticias</a>
+        <a href="https://youtube.com/@fnipewmantu" class="navbar__link" target="_blank" rel="noopener">Transmisión en vivo</a>
+        <a href="#contacto" class="navbar__link">Contacto</a>
+      </nav>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO / CARRUSEL ===== -->
+    <section class="hero" id="inicio" aria-label="Presentación del festival">
+      <div class="hero__carousel" id="heroCarousel">
+
+        <div class="hero__slide hero__slide--active" data-slide="0">
+          <img src="img/danzante-mascara.jpg" alt="Danzante con máscara tejida blanca y traje tradicional durante una presentación nocturna" class="hero__bg-img" id="hero-img" />
+          <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__slide" data-slide="1">
+          <img src="img/caporal.jpg" alt="Bailarín con traje de caporal bordado en rojo y plateado sonriendo en el escenario" class="hero__bg-img" />
+          <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__slide" data-slide="2">
+          <img src="img/pasacalle-peru.jpg" alt="Bailarina de la delegación de Perú en el pasacalle del festival" class="hero__bg-img" />
+          <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__slide" data-slide="3">
+          <img src="img/pasacalle-amarillo.jpg" alt="Jóvenes bailarines con trajes amarillos y blancos sonriendo en el pasacalle" class="hero__bg-img" />
+          <div class="hero__overlay"></div>
+        </div>
+
+        <!-- Contenido de texto, fijo sobre el carrusel -->
+        <div class="hero__content">
+          <p class="hero__eyebrow fade-in">Festival Nacional e Internacional de Folklore</p>
+          <h1 class="hero__title fade-in">Pewma Antü</h1>
+          <p class="hero__ornament-line fade-in"><span class="hero__ornament">⟶</span> Encuentro de las Estrellas <span class="hero__ornament">⟵</span></p>
+          <p class="hero__text fade-in">Un espacio de encuentro, intercambio cultural y celebración de nuestras raíces a través de la música, la danza y la tradición de los pueblos.</p>
+          <div class="hero__actions fade-in">
+            <a href="#sobre" class="btn btn--gold" data-scroll>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.6 6.6L21 11l-6.4 2.4L12 20l-2.6-6.6L3 11l6.4-2.4L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              Conoce más
+            </a>
+            <a href="https://youtube.com/@fnipewmantu" class="btn btn--outline" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Ver video
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta flotante: próxima edición + contador -->
+        <aside class="edition-card fade-in" aria-label="Próxima edición del festival">
+          <p class="edition-card__eyebrow">Próxima edición</p>
+          <p class="edition-card__dates">14 al 26 de enero</p>
+          <p class="edition-card__year">2027</p>
+          <p class="edition-card__regions">Regiones Metropolitana, O'Higgins, Maule y Valparaíso</p>
+
+          <div class="edition-card__divider"></div>
+
+          <div class="countdown" id="countdown" aria-live="polite">
+            <div class="countdown__block">
+              <span class="countdown__number" id="cd-days">00</span>
+              <span class="countdown__label">Días</span>
+            </div>
+            <div class="countdown__block">
+              <span class="countdown__number" id="cd-hours">00</span>
+              <span class="countdown__label">Horas</span>
+            </div>
+            <div class="countdown__block">
+              <span class="countdown__number" id="cd-minutes">00</span>
+              <span class="countdown__label">Min</span>
+            </div>
+            <div class="countdown__block">
+              <span class="countdown__number" id="cd-seconds">00</span>
+              <span class="countdown__label">Seg</span>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- Flechas -->
+        <button class="hero__arrow hero__arrow--prev" id="prevSlide" aria-label="Diapositiva anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="hero__arrow hero__arrow--next" id="nextSlide" aria-label="Siguiente diapositiva">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <!-- Indicadores -->
+        <div class="hero__indicators" id="heroIndicators" role="tablist" aria-label="Seleccionar diapositiva">
+          <button class="hero__dot hero__dot--active" role="tab" aria-selected="true" aria-label="Ir a diapositiva 1" data-index="0"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Ir a diapositiva 2" data-index="1"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Ir a diapositiva 3" data-index="2"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Ir a diapositiva 4" data-index="3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRANJA DE ACCESOS RÁPIDOS ===== -->
+    <section class="quick-links" id="agrupaciones" aria-label="Accesos rápidos">
+      <div class="container quick-links__grid">
+        <a href="#agrupaciones" class="quick-link fade-in">
+          <svg class="quick-link__icon" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.3-3.6 4.2-5.6 7.5-5.6s6.2 2 7.5 5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="quick-link__title">Agrupaciones</span>
+          <span class="quick-link__text">Postula tu agrupación y sé parte del festival</span>
+        </a>
+        <a href="#programacion" class="quick-link fade-in">
+          <svg class="quick-link__icon" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="quick-link__title">Programación</span>
+          <span class="quick-link__text">Revisa fechas, horarios y actividades del festival</span>
+        </a>
+        <a href="https://youtube.com/@fnipewmantu" class="quick-link fade-in" target="_blank" rel="noopener">
+          <svg class="quick-link__icon" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor"/></svg>
+          <span class="quick-link__title">Transmisión en vivo</span>
+          <span class="quick-link__text">Disfruta del festival desde cualquier lugar</span>
+        </a>
+        <a href="#galeria" class="quick-link fade-in">
+          <svg class="quick-link__icon" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="10" r="1.5" fill="currentColor"/><path d="M4 16l4.5-4 3.5 3 3-2.5 5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span class="quick-link__title">Galería</span>
+          <span class="quick-link__text">Fotos y videos de versiones anteriores</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE EL FESTIVAL (contenido original conservado) ===== -->
+    <section class="about" id="sobre" aria-label="Sobre el festival">
+      <div class="container about__grid">
+        <div class="about__text fade-in">
+          <h2 class="section-title">El Encuentro de las Estrellas</h2>
+          <p>El Festival Pewma Antü nació en Chile con el propósito de ser un puente vivo entre las culturas del mundo a través de la música y la danza tradicional. Diseñado como una experiencia itinerante, este encuentro lleva color, ritmo y espectáculos de primer nivel directo al corazón de las comunidades locales, transformando plazas y teatros en escenarios de hermandad.</p>
+          <p>Con los años, el festival se convirtió en un verdadero hogar anual. Inspirados por el espíritu de nuestro himno de Jeremy Armijo, cada edición abrimos las puertas para decir: ¡Bienvenidos, viajeros de corazón! Aquí no hay fronteras ni competencias, solo una gran familia global que se reúne para compartir las risas tras bambalinas, la magia de las raíces y el brillo de cada tradición.</p>
+        </div>
+        <div class="about__image fade-in">
+          <img src="img/grupo-internacional.jpg" alt="Delegaciones internacionales del festival posando con las banderas de sus países" id="about-dancer" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EL HIMNO ===== -->
+    <section class="anthem" id="himno" aria-label="El himno del festival">
+      <div class="container anthem__inner fade-in">
+        <span class="anthem__eyebrow">Nuestro himno</span>
+        <h2 class="section-title section-title--center">El Himno Pewma Antü</h2>
+        <p class="anthem__author">Compuesto por Jeremy Armijo</p>
+
+        <div class="anthem__player">
+          <audio controls preload="metadata">
+            <source src="audio/himno-pewma-antu.mp3" type="audio/mpeg" />
+            Tu navegador no soporta el reproductor de audio. Puedes
+            <a href="audio/himno-pewma-antu.mp3">descargar el himno aquí</a>.
+          </audio>
+        </div>
+
+        <blockquote class="anthem__lyrics">
+          ¡Bienvenidos viajeros del corazón! Pewma Antü los llama en una sola voz,
+          que suenen los pasos, que vibre el tambor, las estrellas se encuentran en esta canción.
+          ¡Bailen, hermanos, sin fronteras ni ayer! Que el folklore nos una de sur a vergel,
+          en Chile se enciende la fiesta y la fe, Pewma Antü es sueño… ¡y hoy es real!
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== LA VISIÓN DE JEREMY ARMIJO ===== -->
+    <section class="vision" id="vision" aria-label="La visión de Jeremy Armijo">
+      <div class="container vision__inner fade-in">
+        <span class="vision__eyebrow">Nuestra esencia</span>
+        <h2 class="section-title section-title--center">La visión de Jeremy Armijo</h2>
+        <p>Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
+        <p>Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.</p>
+        <p>El sueño de Jeremy Armijo es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.</p>
+      </div>
+    </section>
+
+    <!-- ===== NUESTRO EQUIPO ===== -->
+    <section class="team" id="equipo" aria-label="Nuestro equipo">
+      <div class="container">
+        <h2 class="section-title section-title--center fade-in">Nuestro equipo</h2>
+        <div class="team__grid">
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Jeremy Armijo -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Jeremy Armijo" />
+            </div>
+            <h3 class="team-card__name">Jeremy <span>Armijo</span></h3>
+          </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de David Cariman -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="David Cariman" />
+            </div>
+            <h3 class="team-card__name">David <span>Cariman</span></h3>
+          </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Mónica Valenzuela -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Mónica Valenzuela" />
+            </div>
+            <h3 class="team-card__name">Mónica <span>Valenzuela</span></h3>
+          </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Vicente González -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Vicente González" />
+            </div>
+            <h3 class="team-card__name">Vicente <span>González</span></h3>
+          </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Tabita Fernández -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Tabita Fernández" />
+            </div>
+            <h3 class="team-card__name">Tabita <span>Fernández</span></h3>
+          </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Jeann Parraguez -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Jeann Parraguez" />
+            </div>
+            <h3 class="team-card__name">Jeann <span>Parraguez</span></h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BANDA / FRASE DESTACADA ===== -->
+    <section class="banner" aria-label="Un encuentro que une al mundo">
+      <img src="img/danzante-mascara.jpg" alt="" class="banner__bg" loading="lazy" aria-hidden="true" />
+      <div class="banner__overlay"></div>
+      <div class="container banner__content fade-in">
+        <h2 class="banner__title">Un encuentro de estrellas que une al mundo en Chile.</h2>
+        <p class="banner__text">Vive una experiencia transformadora hecha de alegría, vivencias inolvidables y tradiciones vivas. Transformamos los territorios en escenarios de hermandad, donde la música y la danza tejen amistades sin fronteras y conectan el corazón de nuestras comunas con el patrimonio cultural del mundo.</p>
+      </div>
+    </section>
+
+    <!-- ===== MAPA DE PAÍSES PARTICIPANTES ===== -->
+    <section class="worldmap" id="participantes" aria-label="Países participantes por año">
+      <div class="container">
+        <h2 class="section-title section-title--center fade-in">Países participantes</h2>
+        <p class="worldmap__subtitle fade-in">Pasa el cursor —o toca en el móvil— sobre cada país para ver la agrupación y el año en que participó.</p>
+
+        <div class="worldmap__legend" id="mapLegend"></div>
+
+        <div class="worldmap__stage fade-in">
+          <div class="worldmap__map" id="worldMap">
+            <svg class="worldmap__lines" id="mapLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <!-- Los pines se generan con JavaScript desde js/main.js -->
+          </div>
+          <div class="map-tooltip" id="mapTooltip" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="worldmap__nationals fade-in">
+          <h3 class="worldmap__nationals-title">Agrupaciones nacionales · Chile 🇨🇱</h3>
+          <div class="nationals-grid" id="nationalsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALERÍA ===== -->
+    <section class="gallery" id="galeria" aria-label="Galería de fotos del festival">
+      <div class="container">
+        <h2 class="section-title section-title--center fade-in">Galería</h2>
+        <p class="gallery__subtitle fade-in">Momentos que reflejan la magia, el color y la hermandad del Festival Pewma Antü. Haz clic en una foto para verla en grande.</p>
+        <div class="gallery__grid fade-in">
+          <a href="img/grupo-internacional.jpg" class="gallery__item gallery__item--wide" target="_blank" rel="noopener">
+            <img src="img/grupo-internacional.jpg" alt="Delegaciones internacionales del festival posando con las banderas de sus países" loading="lazy" />
+          </a>
+          <a href="img/danzante-mascara.jpg" class="gallery__item" target="_blank" rel="noopener">
+            <img src="img/danzante-mascara.jpg" alt="Danzante con máscara tejida blanca en el escenario nocturno" loading="lazy" />
+          </a>
+          <a href="img/caporal.jpg" class="gallery__item" target="_blank" rel="noopener">
+            <img src="img/caporal.jpg" alt="Bailarín de caporal con traje bordado en rojo y plateado" loading="lazy" />
+          </a>
+          <a href="img/pasacalle-peru.jpg" class="gallery__item" target="_blank" rel="noopener">
+            <img src="img/pasacalle-peru.jpg" alt="Bailarina de la delegación de Perú en el pasacalle" loading="lazy" />
+          </a>
+          <a href="img/pasacalle-amarillo.jpg" class="gallery__item" target="_blank" rel="noopener">
+            <img src="img/pasacalle-amarillo.jpg" alt="Jóvenes bailarines con trajes amarillos y blancos en el pasacalle" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTICIAS / PROGRAMACIÓN / INSTAGRAM ===== -->
+    <section class="hub" aria-label="Noticias, programación e Instagram">
+      <div class="container hub__grid">
+
+        <!-- Noticias -->
+        <div class="hub__col fade-in" id="noticias">
+          <div class="hub__col-header">
+            <h2 class="hub__title">Noticias destacadas</h2>
+            <a href="#noticias" class="hub__see-all">Ver todas →</a>
+          </div>
+
+          <article class="news-card">
+            <img src="img/pasacalle-amarillo.jpg" alt="Jóvenes bailarines con trajes amarillos en el pasacalle" loading="lazy" />
+            <div class="news-card__body">
+              <h3 class="news-card__title">Convocatoria abierta para agrupaciones 2027</h3>
+              <span class="news-card__date">15 de junio, 2026</span>
+              <p class="news-card__excerpt">Ya están abiertas las postulaciones para ser parte de la próxima edición del Festival Pewma Antü.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <img src="img/grupo-internacional.jpg" alt="Delegaciones internacionales del festival con sus banderas" loading="lazy" />
+            <div class="news-card__body">
+              <h3 class="news-card__title">Éxito total en la edición 2026</h3>
+              <span class="news-card__date">28 de enero, 2026</span>
+              <p class="news-card__excerpt">Miles de personas vibraron con la música, danza y cultura de 11 agrupaciones nacionales e internacionales.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Programación -->
+        <div class="hub__col fade-in" id="programacion">
+          <div class="hub__col-header">
+            <h2 class="hub__title">Próxima programación</h2>
+            <a href="#programacion" class="hub__see-all">Ver calendario →</a>
+          </div>
+
+          <ul class="schedule-list">
+            <li class="schedule-item">
+              <div class="schedule-item__date"><span>14</span>ENE</div>
+              <div class="schedule-item__info">
+                <h3>Inauguración Oficial</h3>
+                <p>Teatro Municipal de San Fernando</p>
+              </div>
+              <span class="schedule-item__tag schedule-item__tag--purple">O'Higgins</span>
+            </li>
+            <li class="schedule-item">
+              <div class="schedule-item__date"><span>17</span>ENE</div>
+              <div class="schedule-item__info">
+                <h3>Pasacalle Intercultural</h3>
+                <p>Pichilemu</p>
+              </div>
+              <span class="schedule-item__tag schedule-item__tag--purple">O'Higgins</span>
+            </li>
+            <li class="schedule-item">
+              <div class="schedule-item__date"><span>21</span>ENE</div>
+              <div class="schedule-item__info">
+                <h3>Noche de Gala Folklórica</h3>
+                <p>Centro Cultural de Macul</p>
+              </div>
+              <span class="schedule-item__tag schedule-item__tag--green">Metropolitana</span>
+            </li>
+            <li class="schedule-item">
+              <div class="schedule-item__date"><span>26</span>ENE</div>
+              <div class="schedule-item__info">
+                <h3>Gran Gala de Clausura</h3>
+                <p>Teatro Municipal de Santiago</p>
+              </div>
+              <span class="schedule-item__tag schedule-item__tag--red">Metropolitana</span>
+            </li>
+          </ul>
+
+          <a href="#programacion" class="btn btn--gold btn--block">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Ver programación completa
+          </a>
+        </div>
+
+        <!-- Instagram -->
+        <div class="hub__col fade-in" id="instagram">
+          <div class="hub__col-header">
+            <h2 class="hub__title">Instagram <span class="hub__handle">@festival_pewma_antu</span></h2>
+            <a href="https://www.instagram.com/festival_pewma_antu" class="hub__see-all" target="_blank" rel="noopener">Seguir en Instagram →</a>
+          </div>
+
+          <div class="insta-grid">
+            <img src="img/danzante-mascara.jpg" alt="Danzante enmascarado en el escenario del festival" loading="lazy" />
+            <img src="img/caporal.jpg" alt="Bailarín de caporal en el escenario del festival" loading="lazy" />
+            <img src="img/pasacalle-peru.jpg" alt="Delegación de Perú en el pasacalle" loading="lazy" />
+            <img src="img/pasacalle-amarillo.jpg" alt="Bailarines con trajes amarillos en el pasacalle" loading="lazy" />
+            <img src="img/grupo-internacional.jpg" alt="Foto grupal de las delegaciones internacionales" loading="lazy" />
+            <img src="img/danzante-mascara.jpg" alt="Danzante enmascarado en el escenario del festival" loading="lazy" />
+            <img src="img/pasacalle-peru.jpg" alt="Delegación de Perú en el pasacalle" loading="lazy" />
+            <img src="img/caporal.jpg" alt="Bailarín de caporal en el escenario del festival" loading="lazy" />
+          </div>
+
+          <a href="https://www.instagram.com/festival_pewma_antu" class="btn btn--dark btn--block" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+            Ver más en Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AUSPICIADORES ===== -->
+    <section class="sponsors" aria-label="Auspiciadores y colaboradores">
+      <div class="container sponsors__inner fade-in">
+        <span class="sponsors__label">Auspician y colaboran</span>
+        <div class="sponsors__logos">
+          <!-- TODO: reemplazar por logo real -->
+          <span class="sponsor-badge">San Fernando<br /><small>Municipalidad</small></span>
+          <!-- TODO: reemplazar por logo real -->
+          <span class="sponsor-badge">CORE<br /><small>Consejo Regional</small></span>
+          <!-- TODO: reemplazar por logo real -->
+          <span class="sponsor-badge">Ministerio de las Culturas<br /><small>las Artes y el Patrimonio</small></span>
+          <!-- TODO: reemplazar por logo real -->
+          <span class="sponsor-badge">SERNATUR</span>
+          <span class="sponsor-badge sponsor-badge--muted">Empresas<br /><small>Colaboradoras</small></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contacto">
+    <div class="container footer__grid">
+      <a href="#inicio" class="footer__brand">
+        <img src="img/logo.jpg" alt="Logo del Festival Pewma Antü" class="footer__logo-icon" width="44" height="44" />
+        <span class="footer__brand-text">
+          <span class="footer__brand-title">Pewma Antü</span>
+          <span class="footer__brand-sub">— Encuentro de las Estrellas —</span>
+        </span>
+      </a>
+
+      <div class="footer__legal">
+        <p>© 2026 Festival Pewma Antü. Todos los derechos reservados.</p>
+        <p><a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+        <p class="footer__contact-line">
+          <a href="mailto:pewmantu1@gmail.com">pewmantu1@gmail.com</a> ·
+          <a href="tel:+56992940843">+56 9 9294 0843</a>
+        </p>
+      </div>
+
+      <div class="footer__side">
+        <div class="footer__social">
+          <span class="footer__social-label">Síguenos</span>
+          <div class="footer__social-icons">
+            <a href="https://www.facebook.com/people/FNIF-Pewma-Ant%C3%BC/61571526155711/" class="footer__social-icon" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.instagram.com/festival_pewma_antu" class="footer__social-icon" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://youtube.com/@fnipewmantu" class="footer__social-icon" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5l5 2.5-5 2.5v-5z" fill="currentColor"/></svg>
+            </a>
+            <!-- TODO: reemplazar href por el enlace real de TikTok -->
+            <a href="#" class="footer__social-icon" aria-label="TikTok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4c.3 2 1.7 3.6 3.7 3.9v2.4c-1.4 0-2.7-.4-3.7-1.1v5.1c0 2.7-2.2 4.8-4.9 4.8S4.2 21 4.2 18.3s2.2-4.8 4.9-4.8c.3 0 .5 0 .8.1v2.5c-.3-.1-.5-.1-.8-.1-1.3 0-2.4 1-2.4 2.3s1.1 2.3 2.4 2.3 2.4-1 2.4-2.3V4H14z" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__counter">
+          <span class="footer__counter-label">Contador de visitas</span>
+          <div class="footer__counter-digits" id="visitCounter" aria-label="Número de visitas">
+            <span>0</span><span>0</span><span>1</span><span>2</span><span>4</span><span>5</span><span>8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
