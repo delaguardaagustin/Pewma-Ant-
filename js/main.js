@@ -12,7 +12,59 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   initBackToTop();
   initParticipantsMap();
+  initReviewForm();
 });
+
+/* ---------- Formulario de reseñas ---------- */
+const WHATSAPP_NUMERO = "56944760296"; // número del festival (formato internacional sin +)
+
+function initReviewForm() {
+  const form = document.getElementById("reviewForm");
+  if (!form) return;
+
+  const stars = Array.from(document.querySelectorAll(".review-stars__star"));
+  const ratingInput = document.getElementById("rvRating");
+  const errorEl = document.getElementById("reviewError");
+  let rating = 0;
+
+  function paint(v) {
+    stars.forEach((s) => s.classList.toggle("is-active", Number(s.dataset.value) <= v));
+  }
+
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      rating = Number(star.dataset.value);
+      ratingInput.value = rating;
+      paint(rating);
+    });
+    star.addEventListener("mouseenter", () => paint(Number(star.dataset.value)));
+  });
+  document.getElementById("reviewStars")?.addEventListener("mouseleave", () => paint(rating));
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("rvNombre").value.trim();
+    const lugar = document.getElementById("rvLugar").value.trim();
+    const mensaje = document.getElementById("rvMensaje").value.trim();
+
+    if (!nombre || !mensaje) {
+      errorEl.textContent = "Por favor completa tu nombre y tu experiencia.";
+      errorEl.hidden = false;
+      return;
+    }
+    errorEl.hidden = true;
+
+    const estrellas = rating ? "⭐".repeat(rating) + " (" + rating + "/5)" : "Sin calificación";
+    let texto = "¡Hola! Quiero dejar mi reseña del Festival Pewma Antü:\n\n";
+    texto += "Nombre: " + nombre + "\n";
+    if (lugar) texto += "Lugar: " + lugar + "\n";
+    texto += "Calificación: " + estrellas + "\n";
+    texto += "Experiencia: " + mensaje;
+
+    const url = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(texto);
+    window.open(url, "_blank", "noopener");
+  });
+}
 
 /* ---------- Navbar: sólida al hacer scroll ---------- */
 function initNavbarScroll() {

@@ -988,6 +988,38 @@ button:focus-visible {
 .back-to-top:hover,
 .back-to-top:focus-visible { transform: translateY(-3px); }
 
+/* Botón flotante de WhatsApp */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: waPulse 2.4s ease-out infinite;
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: scale(1.1);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.6);
+  outline: none;
+}
+
+@keyframes waPulse {
+  0% { box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45), 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 /* ============================================
    LA VISIÓN DE JEREMY ARMIJO
    ============================================ */
@@ -1147,6 +1179,23 @@ button:focus-visible {
   background: var(--gold);
 }
 
+.anthem__spotify {
+  max-width: 560px;
+  margin: 3rem auto 0;
+}
+
+.anthem__spotify-title {
+  color: var(--gold);
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+}
+
+.anthem__spotify-player {
+  border-radius: 12px;
+  border: 0;
+  display: block;
+}
+
 /* ============================================
    BANDA / FRASE DESTACADA
    ============================================ */
@@ -1209,6 +1258,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 220px;
+  grid-auto-flow: dense;
   gap: 14px;
 }
 
@@ -1259,6 +1309,110 @@ button:focus-visible {
 }
 
 .gallery__item--wide { grid-column: span 2; }
+
+/* ============================================
+   RESEÑAS / EXPERIENCIAS
+   ============================================ */
+.reviews {
+  padding: 90px 0;
+  background: var(--bg-dark-2);
+}
+
+.reviews__subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.6rem;
+}
+
+.review-form {
+  max-width: 640px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.review-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.review-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.review-form__field > span {
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.review-form__field small { color: var(--text-muted); font-weight: 400; }
+
+.review-form input[type="text"],
+.review-form textarea {
+  width: 100%;
+  background: rgba(10, 14, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.review-form input[type="text"]:focus,
+.review-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.review-form textarea { resize: vertical; }
+
+.review-stars {
+  display: flex;
+  gap: 6px;
+}
+
+.review-stars__star {
+  font-size: 1.9rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.22);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.review-stars__star:hover { transform: scale(1.15); }
+
+.review-stars__star.is-active { color: var(--gold); }
+
+.review-form__error {
+  color: #ff8a8a;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.review-form__submit {
+  width: 100%;
+  margin-top: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.review-form__note {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.review-form__note a { color: var(--purple-hover, #b473c0); }
 
 /* ============================================
    MAPA DE PAÍSES PARTICIPANTES
@@ -1568,8 +1722,9 @@ button:focus-visible {
   .hero__overlay { background: linear-gradient(0deg, var(--bg-dark) 2%, rgba(10,14,28,0.15) 45%, transparent 70%); }
   .hero__content {
     position: relative;
-    height: auto;
-    padding: 26px 6% 0;
+    height: auto !important;
+    justify-content: flex-start;
+    padding: 26px 6% 16px;
     max-width: 100%;
     text-align: center;
     align-items: center;
@@ -1656,6 +1811,10 @@ button:focus-visible {
 
   .gallery__grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
   .gallery__item--wide { grid-column: span 1; }
+
+  .review-form { padding: 22px; }
+  .review-form__row { grid-template-columns: 1fr; gap: 0; }
+  .whatsapp-fab { width: 50px; height: 50px; bottom: 20px; left: 20px; }
 
   .map-pin { width: 28px; height: 28px; }
   .map-pin__flag { font-size: 13px; }
