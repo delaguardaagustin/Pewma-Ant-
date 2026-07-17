@@ -1877,7 +1877,13 @@ button:focus-visible {
   .navbar__nav { display: none; }
   .navbar__toggle { display: flex; }
 
-  .edition-card {
+  /* La tarjeta pasa al flujo normal.
+     Se anula el transform también en .is-visible: si no, la animación de
+     aparición reaplica translateY(-50%) (por mayor especificidad) y la tarjeta
+     se sube encima de los botones del hero. */
+  .edition-card,
+  .edition-card.is-visible,
+  .edition-card.fade-in.is-visible {
     position: static;
     transform: none;
     width: 100%;
