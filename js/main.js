@@ -12,8 +12,68 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   initBackToTop();
   initParticipantsMap();
+  initChileRouteMap();
   initReviewForm();
+  initBackgroundMusic();
 });
+
+/* ---------- Himno al iniciar la página ----------
+   Los navegadores bloquean el audio automático con sonido, así que:
+   1) se intenta reproducir al cargar;
+   2) si el navegador lo bloquea, arranca en la primera interacción del visitante.
+   El botón flotante permite pausar/reanudar en cualquier momento. */
+function initBackgroundMusic() {
+  const audio = document.querySelector("#himno audio");
+  const btn = document.getElementById("musicToggle");
+  if (!audio) return;
+
+  audio.volume = 0.55;
+
+  function syncBtn() {
+    if (!btn) return;
+    btn.classList.toggle("is-playing", !audio.paused);
+    btn.setAttribute("aria-pressed", String(!audio.paused));
+    btn.setAttribute("aria-label", audio.paused ? "Reproducir el himno" : "Pausar el himno");
+  }
+
+  function tryPlay() {
+    const p = audio.play();
+    return p && p.catch ? p : Promise.resolve();
+  }
+
+  audio.addEventListener("play", syncBtn);
+  audio.addEventListener("pause", syncBtn);
+
+  // 1) Intento al cargar (la mayoría de los navegadores lo bloquean)
+  tryPlay().catch(() => {});
+
+  // 2) Respaldo: arranca en la primera interacción real del visitante.
+  //    Los listeners solo se retiran cuando la reproducción realmente comenzó,
+  //    porque eventos como el scroll no habilitan el audio en los navegadores.
+  const eventos = ["pointerdown", "keydown", "touchstart", "click"];
+  const limpiar = () => eventos.forEach((e) => window.removeEventListener(e, alInteractuar));
+  function alInteractuar() {
+    if (audio.dataset.detenidoPorUsuario) { limpiar(); return; }
+    if (!audio.paused) { limpiar(); return; }
+    tryPlay().then(limpiar).catch(() => {}); // si falla, seguimos esperando
+  }
+  eventos.forEach((e) => window.addEventListener(e, alInteractuar, { passive: true }));
+
+  // Botón flotante
+  if (btn) {
+    btn.addEventListener("click", () => {
+      if (audio.paused) {
+        delete audio.dataset.detenidoPorUsuario;
+        audio.play();
+      } else {
+        audio.dataset.detenidoPorUsuario = "1"; // no reanudar automáticamente
+        audio.pause();
+      }
+    });
+  }
+
+  syncBtn();
+}
 
 /* ---------- Formulario de reseñas ---------- */
 const WHATSAPP_NUMERO = "56944760296"; // número del festival (formato internacional sin +)
@@ -358,6 +418,20 @@ function initParticipantsMap() {
 
   let activePin = null;
 
+  // --- Anillos tipo radar alrededor de Chile (sede) ---
+  [3, 6, 9].forEach((r, i) => {
+    const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    ring.setAttribute("cx", CHILE.x);
+    ring.setAttribute("cy", CHILE.y);
+    ring.setAttribute("r", r);
+    ring.setAttribute("fill", "none");
+    ring.setAttribute("stroke", "#FFD84D");
+    ring.setAttribute("stroke-opacity", 0.18 - i * 0.05);
+    ring.setAttribute("stroke-width", "0.3");
+    ring.setAttribute("vector-effect", "non-scaling-stroke");
+    linesSvg.appendChild(ring);
+  });
+
   // --- Líneas desde Chile (sede) hacia cada país ---
   PARTICIPANTES.forEach((p) => {
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -368,7 +442,9 @@ function initParticipantsMap() {
     line.setAttribute("stroke", COLORES_ANIO[p.anio]);
     line.setAttribute("stroke-width", "0.4");
     line.setAttribute("stroke-opacity", "0.35");
+    line.setAttribute("stroke-dasharray", "1.5 1.5");
     line.setAttribute("vector-effect", "non-scaling-stroke");
+    line.setAttribute("class", "worldmap__line");
     line.dataset.anio = p.anio;
     linesSvg.appendChild(line);
   });
@@ -482,18 +558,138 @@ function initParticipantsMap() {
     }
   });
 
-  // --- Lista de agrupaciones nacionales ---
-  if (nationalsGrid) {
-    NACIONALES.forEach((n) => {
-      const a = document.createElement("a");
-      a.className = "national-card";
-      a.href = n.ig;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.innerHTML =
-        '<span class="national-card__name">' + n.grupo + "</span>" +
-        '<span class="national-card__comuna">📍 ' + n.comuna + "</span>";
-      nationalsGrid.appendChild(a);
-    });
-  }
+}
+
+/* ---------- Mapa de la ruta por Chile (enero 2027) ----------
+   x / y son porcentajes sobre el mapa según la ubicación geográfica de cada comuna.
+   Editar aquí para cambiar fechas, comunas o enlaces. */
+const COLOR_REGION = {
+  "Valparaíso": "#3a7bd5",
+  "Metropolitana": "#4FD1C5",
+  "O'Higgins": "#B473C0",
+  "Maule": "#E0A32E",
+};
+
+/* Bandas de región (de norte a sur), en % de altura del mapa */
+const BANDAS_REGION = [
+  { region: "Valparaíso", desde: 0, hasta: 23 },
+  { region: "Metropolitana", desde: 23, hasta: 54 },
+  { region: "O'Higgins", desde: 54, hasta: 88.5 },
+  { region: "Maule", desde: 88.5, hasta: 100 },
+];
+
+/* Paradas en orden cronológico (la ruta sigue este orden) */
+const RUTA_2027 = [
+  { dia: 15, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 26.4, y: 79.6, ig: "https://www.instagram.com/bafonanoficial/" },
+  { dia: 16, comuna: "Romeral",       grupo: "Corporación Cultural Romeral",       region: "Maule",         x: 32.7, y: 91.2, ig: "https://www.instagram.com/culturaromeral/" },
+  { dia: 17, comuna: "Curicó",        grupo: "Las Acacias Ballet Folklórico",      region: "Maule",         x: 23.6, y: 91.5, ig: "https://www.instagram.com/lasacacias.bfm/" },
+  { dia: 18, comuna: "Rancagua",      grupo: "Grupo de Danza Folklórica Maulikan", region: "O'Higgins",     x: 69.1, y: 60.4, ig: "https://www.instagram.com/maulikan.oficial/" },
+  { dia: 19, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 26.4, y: 79.6, ig: "https://www.instagram.com/bafonanoficial/" },
+  { dia: 21, comuna: "Renca",         grupo: "DANFORES",                           region: "Metropolitana", x: 70.0, y: 30.8, ig: "https://www.instagram.com/danfore_renca/" },
+  { dia: 22, comuna: "Macul",         grupo: "Walmapu Compañía Folklórica",        region: "Metropolitana", x: 81.8, y: 35.5, ig: "https://www.instagram.com/walmapu.cl/" },
+  { dia: 23, comuna: "Llay Llay",     grupo: "Ballet Folklórico de Llay Llay",     region: "Valparaíso",    x: 49.1, y: 9.2,  ig: "https://www.instagram.com/ballet.llay_llay/" },
+  { dia: 24, comuna: "Padre Hurtado", grupo: "Agrupación Folklórica Alborada",     region: "Metropolitana", x: 62.7, y: 37.3, ig: "https://www.instagram.com/agrupacion.alborada/" },
+  { dia: 26, comuna: "Providencia",   grupo: "Gala de Clausura",                   region: "Metropolitana", x: 80.9, y: 29.5, ig: null },
+];
+
+function initChileRouteMap() {
+  const map = document.getElementById("chileMap");
+  const svg = document.getElementById("chileLines");
+  const tooltip = document.getElementById("chileTooltip");
+  if (!map || !svg || !tooltip) return;
+
+  // --- Bandas de región ---
+  BANDAS_REGION.forEach((b) => {
+    const band = document.createElement("div");
+    band.className = "chilemap__band";
+    band.style.top = b.desde + "%";
+    band.style.height = b.hasta - b.desde + "%";
+    band.style.setProperty("--band-color", COLOR_REGION[b.region]);
+    band.innerHTML = '<span class="chilemap__band-label">' + b.region + "</span>";
+    map.appendChild(band);
+  });
+
+  // --- Línea de la ruta (en orden de fecha) ---
+  const puntos = RUTA_2027.map((p) => p.x + "," + p.y).join(" ");
+  const linea = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+  linea.setAttribute("points", puntos);
+  linea.setAttribute("fill", "none");
+  linea.setAttribute("stroke", "#FFD84D");
+  linea.setAttribute("stroke-width", "0.5");
+  linea.setAttribute("stroke-opacity", "0.5");
+  linea.setAttribute("stroke-dasharray", "1.6 1.4");
+  linea.setAttribute("vector-effect", "non-scaling-stroke");
+  linea.setAttribute("class", "chilemap__route");
+  svg.appendChild(linea);
+
+  // --- Agrupa paradas por comuna (Nancagua se repite el 15 y el 19) ---
+  const porComuna = new Map();
+  RUTA_2027.forEach((p) => {
+    if (porComuna.has(p.comuna)) porComuna.get(p.comuna).dias.push(p.dia);
+    else porComuna.set(p.comuna, { ...p, dias: [p.dia] });
+  });
+
+  let activo = null;
+
+  porComuna.forEach((p) => {
+    const esEnlace = Boolean(p.ig);
+    const pin = document.createElement(esEnlace ? "a" : "button");
+    pin.className = "route-pin";
+    pin.style.left = p.x + "%";
+    pin.style.top = p.y + "%";
+    pin.style.setProperty("--pin-color", COLOR_REGION[p.region]);
+    pin.innerHTML = '<span class="route-pin__day">' + p.dias[0] + "</span>";
+
+    const fechas = p.dias.map((d) => d + " de enero").join(" y ");
+    if (esEnlace) {
+      pin.href = p.ig;
+      pin.target = "_blank";
+      pin.rel = "noopener";
+      pin.setAttribute("aria-label", p.comuna + ", " + fechas + ", " + p.grupo + ". Abre su Instagram");
+    } else {
+      pin.type = "button";
+      pin.setAttribute("aria-label", p.comuna + ", " + fechas + ", " + p.grupo);
+    }
+
+    const html =
+      '<div class="map-tooltip__body">' +
+      '<strong class="map-tooltip__country">' + p.comuna + "</strong>" +
+      '<span class="map-tooltip__badge" style="background:' + COLOR_REGION[p.region] + '">' + fechas + "</span>" +
+      '<span class="map-tooltip__group">' + p.grupo + "</span>" +
+      '<span class="map-tooltip__region">Región ' + p.region + "</span>" +
+      (esEnlace ? '<span class="map-tooltip__link">Ver en Instagram →</span>' : "") +
+      "</div>";
+
+    const mostrar = () => {
+      tooltip.innerHTML = html;
+      tooltip.classList.add("is-visible");
+      const stage = map.parentElement;
+      const sr = stage.getBoundingClientRect();
+      const pr = pin.getBoundingClientRect();
+      tooltip.style.left = pr.left - sr.left + pr.width / 2 + "px";
+      tooltip.style.top = pr.top - sr.top + "px";
+      pin.classList.add("is-hover");
+      activo = pin;
+    };
+    const ocultar = () => {
+      tooltip.classList.remove("is-visible");
+      pin.classList.remove("is-hover");
+      if (activo === pin) activo = null;
+    };
+
+    pin.addEventListener("mouseenter", mostrar);
+    pin.addEventListener("mouseleave", ocultar);
+    pin.addEventListener("focus", mostrar);
+    pin.addEventListener("blur", ocultar);
+
+    map.appendChild(pin);
+  });
+
+  // Cierra el tooltip al tocar fuera (móvil)
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".route-pin") && !e.target.closest("#chileTooltip")) {
+      tooltip.classList.remove("is-visible");
+      if (activo) { activo.classList.remove("is-hover"); activo = null; }
+    }
+  });
 }
