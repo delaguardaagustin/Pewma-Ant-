@@ -633,136 +633,183 @@ const COLOR_REGION = {
 /* Bandas de región (de norte a sur), en % de altura del mapa */
 const BANDAS_REGION = [
   { region: "Valparaíso", desde: 0, hasta: 33 },
-  { region: "Metropolitana", desde: 33, hasta: 48 },
-  { region: "O'Higgins", desde: 48, hasta: 68 },
+  { region: "Metropolitana", desde: 33, hasta: 47 },
+  { region: "O'Higgins", desde: 47, hasta: 68 },
   { region: "Maule", desde: 68, hasta: 100 },
 ];
 
 /* Contorno real de Chile central (GeoJSON Natural Earth, proyeccion Mercator).
-   viewBox 0 0 600 900 · encuadre lat -31.5 a -36.3, lon -73.2 a -69.6 */
-const GEO_CHILE = "M830.0,-1742.3 L895.3,-1510.7 L1015.6,-1533.8 L1035.8,-1491.5 L978.6,-1315.3 L797.1,-1231.2 L802.3,-944.3 L767.5,-888.4 L817.4,-820.1 L699.8,-711.4 L590.6,-546.1 L531.1,-384.7 L546.8,-211.0 L444.2,-24.6 L520.9,292.8 L564.2,326.8 L563.8,498.8 L468.7,683.4 L472.5,843.2 L346.4,969.3 L346.9,1148.5 L397.6,1341.3 L297.7,1413.7 L253.2,1593.2 L214.0,1802.2 L242.2,2055.1 L175.2,2097.8 L214.1,2342.5 L289.3,2423.9 L234.4,2514.6 L311.7,2558.2 L329.5,2640.5 L256.8,2682.0 L274.7,2811.8 L213.8,3109.5 L125.4,3305.3 L144.8,3422.9 L92.0,3572.0 L-35.9,3676.4 L-21.3,3932.2 L37.4,4021.0 L148.3,4005.2 L145.1,4190.5 L214.2,4336.9 L616.9,4370.8 L771.4,4410.5 L623.1,4408.6 L542.9,4471.4 L392.5,4564.1 L365.6,4807.6 L295.0,4813.7 L107.0,4728.3 L-83.8,4547.6 L-291.1,4401.2 L-343.3,4241.4 L-296.1,4095.5 L-380.0,3932.1 L-401.3,3523.6 L-330.5,3299.2 L-154.4,3121.9 L-407.4,3055.6 L-248.7,2857.0 L-192.0,2492.1 L-6.7,2568.5 L80.4,2124.8 L-31.5,2069.0 L-83.6,2333.3 L-188.7,2303.2 L-136.3,2001.5 L-79.5,1620.4 L-2.9,1482.4 L-50.9,1287.7 L-64.7,1066.2 L5.5,1059.8 L107.8,748.1 L223.0,445.4 L293.6,168.5 L255.2,-105.4 L305.0,-254.3 L285.0,-474.8 L382.5,-690.4 L412.5,-1027.2 L466.0,-1382.7 L518.1,-1759.2 L505.9,-2031.1 L471.2,-2262.9 L556.9,-2304.7 L601.6,-2388.5 L683.3,-2277.3 L705.5,-2158.9 L793.0,-2089.1 L740.5,-1929.1 L830.0,-1742.3Z";
+   viewBox 0 0 600 1201 · encuadre lat -31.6 a -36.25, lon -72.6 a -69.8
+   La proporcion del viewBox respeta la real, por eso el mapa no se deforma. */
+const GEO_CHILE = "M938.6,-2425.5 L1022.5,-2106.4 L1177.1,-2138.3 L1203.2,-2080.1 L1129.6,-1837.3 L896.2,-1721.3 L903.0,-1326.1 L858.3,-1249.2 L922.4,-1155.0 L771.2,-1005.2 L630.8,-777.6 L554.2,-555.1 L574.5,-315.8 L442.5,-59.0 L541.2,378.3 L596.8,425.0 L596.3,662.0 L474.0,916.4 L479.0,1136.5 L316.7,1310.2 L317.4,1557.1 L382.6,1822.8 L254.2,1922.6 L197.0,2169.8 L146.6,2457.7 L182.8,2806.2 L96.7,2865.0 L146.7,3202.1 L243.4,3314.3 L172.8,3439.3 L272.2,3499.3 L295.1,3612.6 L201.6,3669.9 L224.6,3848.7 L146.3,4258.8 L32.7,4528.6 L57.6,4690.6 L-10.3,4896.0 L-174.7,5039.9 L-156.0,5392.3 L-80.5,5514.7 L62.1,5492.9 L58.0,5748.2 L146.8,5949.8 L664.6,5996.5 L863.2,6051.3 L672.6,6048.7 L569.4,6135.1 L376.0,6262.9 L341.5,6598.3 L250.8,6606.8 L9.0,6489.1 L-236.3,6240.1 L-502.9,6038.4 L-570.0,5818.2 L-509.3,5617.2 L-617.1,5392.2 L-644.6,4829.4 L-553.5,4520.2 L-327.1,4275.9 L-652.4,4184.6 L-448.3,3911.0 L-375.4,3408.2 L-137.2,3513.5 L-25.2,2902.2 L-169.1,2825.3 L-236.0,3189.5 L-371.1,3148.1 L-303.8,2732.3 L-230.8,2207.3 L-132.3,2017.2 L-194.0,1748.9 L-211.7,1443.7 L-121.4,1435.0 L10.0,1005.5 L158.2,588.4 L248.9,206.9 L199.6,-170.3 L263.6,-375.5 L237.9,-679.3 L363.2,-976.4 L401.8,-1440.3 L470.6,-1930.1 L537.6,-2448.7 L521.9,-2823.4 L477.3,-3142.7 L587.5,-3200.3 L644.9,-3315.7 L749.9,-3162.6 L778.5,-2999.4 L891.0,-2903.3 L823.5,-2682.8 L938.6,-2425.5Z";
+const CHILE_VIEWBOX = { w: 600, h: 1201 };
 
 /* Paradas con coordenadas geograficas reales de cada comuna (% sobre el mapa) */
 const RUTA_2027 = [
-  { dia: 15, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 55.22, y: 65.34, ig: "https://www.instagram.com/bafonanoficial/" },
-  { dia: 16, comuna: "Romeral",       grupo: "Corporación Cultural Romeral",       region: "Maule",         x: 57.08, y: 71.63, ig: "https://www.instagram.com/culturaromeral/" },
-  { dia: 17, comuna: "Curicó",        grupo: "Las Acacias Ballet Folklórico",      region: "Maule",         x: 54.47, y: 71.99, ig: "https://www.instagram.com/lasacacias.bfm/" },
-  { dia: 18, comuna: "Rancagua",      grupo: "Grupo de Danza Folklórica Maulikan", region: "O'Higgins",     x: 68.22, y: 54.92, ig: "https://www.instagram.com/maulikan.oficial/" },
-  { dia: 19, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 55.22, y: 65.34, ig: "https://www.instagram.com/bafonanoficial/" },
-  { dia: 21, comuna: "Renca",         grupo: "DANFORES",                           region: "Metropolitana", x: 68.70, y: 39.00, ig: "https://www.instagram.com/danfore_renca/" },
-  { dia: 22, comuna: "Macul",         grupo: "Walmapu Compañía Folklórica",        region: "Metropolitana", x: 72.28, y: 40.72, ig: "https://www.instagram.com/walmapu.cl/" },
-  { dia: 23, comuna: "Llay Llay",     grupo: "Ballet Folklórico de Llay Llay",     region: "Valparaíso",    x: 62.12, y: 27.40, ig: "https://www.instagram.com/ballet.llay_llay/" },
-  { dia: 24, comuna: "Padre Hurtado", grupo: "Agrupación Folklórica Alborada",     region: "Metropolitana", x: 66.30, y: 42.50, ig: "https://www.instagram.com/agrupacion.alborada/" },
-  { dia: 26, comuna: "Providencia",   grupo: "Gala de Clausura",                   region: "Metropolitana", x: 71.95, y: 39.46, ig: null },
+  { dia: 15, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 49.57, y: 65.33, ig: "https://www.instagram.com/bafonanoficial/" },
+  { dia: 16, comuna: "Romeral",       grupo: "Corporación Cultural Romeral",       region: "Maule",         x: 51.97, y: 71.84, ig: "https://www.instagram.com/culturaromeral/" },
+  { dia: 17, comuna: "Curicó",        grupo: "Las Acacias Ballet Folklórico",      region: "Maule",         x: 48.60, y: 72.20, ig: "https://www.instagram.com/lasacacias.bfm/" },
+  { dia: 18, comuna: "Rancagua",      grupo: "Grupo de Danza Folklórica Maulikan", region: "O'Higgins",     x: 66.28, y: 54.59, ig: "https://www.instagram.com/maulikan.oficial/" },
+  { dia: 19, comuna: "Nancagua",      grupo: "BAFONAN",                            region: "O'Higgins",     x: 49.57, y: 65.33, ig: "https://www.instagram.com/bafonanoficial/" },
+  { dia: 21, comuna: "Renca",         grupo: "DANFORES",                           region: "Metropolitana", x: 66.90, y: 38.15, ig: "https://www.instagram.com/danfore_renca/" },
+  { dia: 22, comuna: "Macul",         grupo: "Walmapu Compañía Folklórica",        region: "Metropolitana", x: 71.50, y: 39.93, ig: "https://www.instagram.com/walmapu.cl/" },
+  { dia: 23, comuna: "Llay Llay",     grupo: "Ballet Folklórico de Llay Llay",     region: "Valparaíso",    x: 58.43, y: 26.18, ig: "https://www.instagram.com/ballet.llay_llay/" },
+  { dia: 24, comuna: "Padre Hurtado", grupo: "Agrupación Folklórica Alborada",     region: "Metropolitana", x: 63.82, y: 41.76, ig: "https://www.instagram.com/agrupacion.alborada/" },
+  { dia: 26, comuna: "Providencia",   grupo: "Gala de Clausura",                   region: "Metropolitana", x: 71.07, y: 38.63, ig: null },
 ];
 
 function initChileRouteMap() {
   const map = document.getElementById("chileMap");
-  const svg = document.getElementById("chileLines");
-  const tooltip = document.getElementById("chileTooltip");
-  if (!map || !svg || !tooltip) return;
+  const svg = document.getElementById("chileGeo");
+  const lista = document.getElementById("routeList");
+  if (!map || !svg) return;
 
-  // --- Contorno geográfico real de Chile ---
-  const geo = document.getElementById("chileGeo");
-  if (geo) {
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", GEO_CHILE);
-    path.setAttribute("class", "chilemap__country");
-    geo.appendChild(path);
+  const W = CHILE_VIEWBOX.w, H = CHILE_VIEWBOX.h;
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t, attrs) => {
+    const n = document.createElementNS(NS, t);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  };
+
+  /* ---------- Definiciones: degradados, recorte y brillo ---------- */
+  const defs = el("defs", {});
+
+  const oceano = el("linearGradient", { id: "gradOceano", x1: "0", y1: "0", x2: "1", y2: "1" });
+  oceano.appendChild(el("stop", { offset: "0%", "stop-color": "#0d1830" }));
+  oceano.appendChild(el("stop", { offset: "100%", "stop-color": "#080c18" }));
+  defs.appendChild(oceano);
+
+  const tierra = el("linearGradient", { id: "gradTierra", x1: "0", y1: "0", x2: "0", y2: "1" });
+  tierra.appendChild(el("stop", { offset: "0%", "stop-color": "#233156" }));
+  tierra.appendChild(el("stop", { offset: "100%", "stop-color": "#1a2340" }));
+  defs.appendChild(tierra);
+
+  // Recorte con la silueta del país: los tintes de región solo se ven dentro
+  const clip = el("clipPath", { id: "clipChile" });
+  clip.appendChild(el("path", { d: GEO_CHILE }));
+  defs.appendChild(clip);
+
+  // Brillo dorado del contorno
+  const filtro = el("filter", { id: "brilloPais", x: "-30%", y: "-10%", width: "160%", height: "120%" });
+  filtro.appendChild(el("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "6", result: "b" }));
+  const merge = el("feMerge", {});
+  merge.appendChild(el("feMergeNode", { in: "b" }));
+  merge.appendChild(el("feMergeNode", { in: "SourceGraphic" }));
+  filtro.appendChild(merge);
+  defs.appendChild(filtro);
+
+  svg.appendChild(defs);
+
+  /* ---------- Océano y retícula ---------- */
+  svg.appendChild(el("rect", { x: 0, y: 0, width: W, height: H, fill: "url(#gradOceano)" }));
+
+  const grid = el("g", { class: "chilemap__grid" });
+  for (let i = 1; i < 10; i++) {
+    grid.appendChild(el("line", { x1: 0, y1: (H / 10) * i, x2: W, y2: (H / 10) * i }));
   }
+  for (let i = 1; i < 5; i++) {
+    grid.appendChild(el("line", { x1: (W / 5) * i, y1: 0, x2: (W / 5) * i, y2: H }));
+  }
+  svg.appendChild(grid);
 
-  // --- Etiquetas de región (referencia lateral) ---
+  /* ---------- País: relleno, tintes de región y contorno ---------- */
+  svg.appendChild(el("path", { d: GEO_CHILE, fill: "url(#gradTierra)" }));
+
+  const tintes = el("g", { "clip-path": "url(#clipChile)" });
   BANDAS_REGION.forEach((b) => {
-    const band = document.createElement("div");
-    band.className = "chilemap__band";
-    band.style.top = b.desde + "%";
-    band.style.height = b.hasta - b.desde + "%";
-    band.style.setProperty("--band-color", COLOR_REGION[b.region]);
-    band.innerHTML = '<span class="chilemap__band-label">' + b.region + "</span>";
-    map.appendChild(band);
+    tintes.appendChild(el("rect", {
+      x: 0, y: (b.desde / 100) * H, width: W, height: ((b.hasta - b.desde) / 100) * H,
+      fill: COLOR_REGION[b.region], opacity: 0.22,
+    }));
+  });
+  svg.appendChild(tintes);
+
+  svg.appendChild(el("path", { d: GEO_CHILE, class: "chilemap__country", filter: "url(#brilloPais)" }));
+
+  /* ---------- Etiquetas de región sobre el océano ---------- */
+  BANDAS_REGION.forEach((b) => {
+    const y = ((b.desde + b.hasta) / 2 / 100) * H;
+    svg.appendChild(el("line", {
+      x1: 12, y1: (b.hasta / 100) * H, x2: W - 12, y2: (b.hasta / 100) * H,
+      class: "chilemap__divider",
+    }));
+    const t = el("text", { x: 14, y: y, class: "chilemap__region-label", fill: COLOR_REGION[b.region] });
+    t.textContent = b.region.toUpperCase();
+    svg.appendChild(t);
   });
 
-  // --- Línea de la ruta (en orden de fecha) ---
-  const puntos = RUTA_2027.map((p) => p.x + "," + p.y).join(" ");
-  const linea = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  linea.setAttribute("points", puntos);
-  linea.setAttribute("fill", "none");
-  linea.setAttribute("stroke", "#FFD84D");
-  linea.setAttribute("stroke-width", "0.5");
-  linea.setAttribute("stroke-opacity", "0.5");
-  linea.setAttribute("stroke-dasharray", "1.6 1.4");
-  linea.setAttribute("vector-effect", "non-scaling-stroke");
-  linea.setAttribute("class", "chilemap__route");
-  svg.appendChild(linea);
+  /* ---------- Ruta que une las paradas en orden de fecha ---------- */
+  const pts = RUTA_2027.map((p) => (p.x / 100) * W + "," + (p.y / 100) * H).join(" ");
+  svg.appendChild(el("polyline", { points: pts, class: "chilemap__route-glow" }));
+  svg.appendChild(el("polyline", { points: pts, class: "chilemap__route" }));
 
-  // --- Agrupa paradas por comuna (Nancagua se repite el 15 y el 19) ---
+  /* ---------- Pines y lista sincronizados ---------- */
   const porComuna = new Map();
   RUTA_2027.forEach((p) => {
     if (porComuna.has(p.comuna)) porComuna.get(p.comuna).dias.push(p.dia);
     else porComuna.set(p.comuna, { ...p, dias: [p.dia] });
   });
 
-  let activo = null;
+  const pines = new Map();
 
-  porComuna.forEach((p) => {
+  porComuna.forEach((p, comuna) => {
     const esEnlace = Boolean(p.ig);
-    const pin = document.createElement(esEnlace ? "a" : "button");
+    const pin = document.createElement(esEnlace ? "a" : "div");
     pin.className = "route-pin";
     pin.style.left = p.x + "%";
     pin.style.top = p.y + "%";
     pin.style.setProperty("--pin-color", COLOR_REGION[p.region]);
-    pin.innerHTML = '<span class="route-pin__day">' + p.dias[0] + "</span>";
+    pin.innerHTML =
+      '<span class="route-pin__dot"></span>' +
+      '<span class="route-pin__label">' + comuna + "</span>";
 
-    const fechas = p.dias.map((d) => d + " de enero").join(" y ");
+    const fechas = p.dias.map((d) => d + " ene").join(" · ");
     if (esEnlace) {
       pin.href = p.ig;
       pin.target = "_blank";
       pin.rel = "noopener";
-      pin.setAttribute("aria-label", p.comuna + ", " + fechas + ", " + p.grupo + ". Abre su Instagram");
-    } else {
-      pin.type = "button";
-      pin.setAttribute("aria-label", p.comuna + ", " + fechas + ", " + p.grupo);
+      pin.setAttribute("aria-label", comuna + ", " + fechas + ", " + p.grupo + ". Abre su Instagram");
     }
-
-    const html =
-      '<div class="map-tooltip__body">' +
-      '<strong class="map-tooltip__country">' + p.comuna + "</strong>" +
-      '<span class="map-tooltip__badge" style="background:' + COLOR_REGION[p.region] + '">' + fechas + "</span>" +
-      '<span class="map-tooltip__group">' + p.grupo + "</span>" +
-      '<span class="map-tooltip__region">Región ' + p.region + "</span>" +
-      (esEnlace ? '<span class="map-tooltip__link">Ver en Instagram →</span>' : "") +
-      "</div>";
-
-    const mostrar = () => {
-      tooltip.innerHTML = html;
-      tooltip.classList.add("is-visible");
-      const stage = map.parentElement;
-      const sr = stage.getBoundingClientRect();
-      const pr = pin.getBoundingClientRect();
-      tooltip.style.left = pr.left - sr.left + pr.width / 2 + "px";
-      tooltip.style.top = pr.top - sr.top + "px";
-      pin.classList.add("is-hover");
-      activo = pin;
-    };
-    const ocultar = () => {
-      tooltip.classList.remove("is-visible");
-      pin.classList.remove("is-hover");
-      if (activo === pin) activo = null;
-    };
-
-    pin.addEventListener("mouseenter", mostrar);
-    pin.addEventListener("mouseleave", ocultar);
-    pin.addEventListener("focus", mostrar);
-    pin.addEventListener("blur", ocultar);
-
     map.appendChild(pin);
+    pines.set(comuna, pin);
   });
 
-  // Cierra el tooltip al tocar fuera (móvil)
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".route-pin") && !e.target.closest("#chileTooltip")) {
-      tooltip.classList.remove("is-visible");
-      if (activo) { activo.classList.remove("is-hover"); activo = null; }
-    }
-  });
+  /* Lista de fechas al costado */
+  if (lista) {
+    RUTA_2027.forEach((p) => {
+      const li = document.createElement("li");
+      li.className = "route-item";
+      li.style.setProperty("--pin-color", COLOR_REGION[p.region]);
+      const inner = p.ig
+        ? '<a class="route-item__link" href="' + p.ig + '" target="_blank" rel="noopener">'
+        : '<div class="route-item__link route-item__link--plain">';
+      li.innerHTML =
+        inner +
+        '<span class="route-item__day"><b>' + p.dia + "</b><small>ENE</small></span>" +
+        '<span class="route-item__info">' +
+        '<strong>' + p.comuna + "</strong>" +
+        '<span class="route-item__group">' + p.grupo + "</span>" +
+        "</span>" +
+        '<span class="route-item__region">' + p.region + "</span>" +
+        (p.ig ? '<span class="route-item__ig" aria-hidden="true">↗</span>' : "") +
+        (p.ig ? "</a>" : "</div>");
+
+      // Al pasar por la lista se resalta el pin en el mapa, y viceversa
+      const pin = pines.get(p.comuna);
+      const on = () => { li.classList.add("is-active"); pin?.classList.add("is-active"); };
+      const off = () => { li.classList.remove("is-active"); pin?.classList.remove("is-active"); };
+      li.addEventListener("mouseenter", on);
+      li.addEventListener("mouseleave", off);
+      li.addEventListener("focusin", on);
+      li.addEventListener("focusout", off);
+      if (pin) {
+        pin.addEventListener("mouseenter", on);
+        pin.addEventListener("mouseleave", off);
+        pin.addEventListener("focus", on);
+        pin.addEventListener("blur", off);
+      }
+      lista.appendChild(li);
+    });
+  }
 }
