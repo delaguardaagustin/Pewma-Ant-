@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=8" />
+  <link rel="stylesheet" href="css/styles.css?v=10" />
 </head>
 <body>
 
@@ -46,7 +46,7 @@
           </button>
           <div class="navbar__dropdown-menu">
             <a href="#sobre">Sobre el festival</a>
-            <a href="#vision">La visión</a>
+            <a href="#vision">Palabras del director</a>
             <a href="#equipo">Nuestro equipo</a>
             <a href="#participantes">Países participantes</a>
             <a href="#himno">El himno</a>
@@ -254,10 +254,10 @@
     </section>
 
     <!-- ===== LA VISIÓN DE JEREMY ARMIJO ===== -->
-    <section class="vision" id="vision" aria-label="La visión de Jeremy Armijo">
+    <section class="vision" id="vision" aria-label="Palabras del director">
       <div class="container vision__inner fade-in">
-        <span class="vision__eyebrow">Nuestra esencia</span>
-        <h2 class="section-title section-title--center">La visión de Jeremy Armijo</h2>
+        <span class="vision__eyebrow">Jeremy Armijo · Fundador y director</span>
+        <h2 class="section-title section-title--center">Palabras del director</h2>
         <p>Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
         <p>Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.</p>
         <p>El sueño de Jeremy Armijo es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.</p>
@@ -316,6 +316,14 @@
             </div>
             <h3 class="team-card__name">Jeann <span>Parraguez</span></h3>
           </article>
+
+          <article class="team-card fade-in">
+            <div class="team-card__photo">
+              <!-- TODO: reemplazar por foto real de Esteban González -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eee7d4'/%3E%3Ccircle cx='50' cy='40' r='16' fill='%23c2b892'/%3E%3Cpath d='M22 84c0-16 12-26 28-26s28 10 28 26z' fill='%23c2b892'/%3E%3C/svg%3E" alt="Esteban González" />
+            </div>
+            <h3 class="team-card__name">Esteban <span>González</span></h3>
+          </article>
         </div>
       </div>
     </section>
@@ -340,6 +348,8 @@
 
         <div class="worldmap__stage fade-in">
           <div class="worldmap__map" id="worldMap">
+            <!-- Contornos geográficos reales (se dibujan desde js/main.js) -->
+            <svg class="worldmap__geo" id="mapGeo" viewBox="0 0 1000 1100" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
             <svg class="worldmap__lines" id="mapLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
             <!-- Los pines se generan con JavaScript desde js/main.js -->
           </div>
@@ -352,6 +362,8 @@
 
           <div class="chilemap__stage">
             <div class="chilemap__map" id="chileMap">
+              <!-- Contorno geográfico real de Chile central (se dibuja desde js/main.js) -->
+              <svg class="chilemap__geo" id="chileGeo" viewBox="0 0 600 900" preserveAspectRatio="none" aria-hidden="true"></svg>
               <svg class="chilemap__lines" id="chileLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
               <!-- Las bandas de región y los pines se generan desde js/main.js -->
             </div>
@@ -567,9 +579,9 @@
             <img src="img/pasacalle-peru.jpg" alt="Delegación de Perú en el pasacalle" loading="lazy" />
             <img src="img/pasacalle-amarillo.jpg" alt="Bailarines con trajes amarillos en el pasacalle" loading="lazy" />
             <img src="img/grupo-internacional.jpg" alt="Foto grupal de las delegaciones internacionales" loading="lazy" />
-            <img src="img/danzante-mascara.jpg" alt="Danzante enmascarado en el escenario del festival" loading="lazy" />
-            <img src="img/pasacalle-peru.jpg" alt="Delegación de Perú en el pasacalle" loading="lazy" />
-            <img src="img/caporal.jpg" alt="Bailarín de caporal en el escenario del festival" loading="lazy" />
+            <img src="img/galeria-02.jpg" alt="Danza tradicional con trajes rojos y máscaras" loading="lazy" />
+            <img src="img/galeria-09.jpg" alt="Bailarina con vestido andino colorido" loading="lazy" />
+            <img src="img/galeria-13.jpg" alt="Gran final en el escenario con las delegaciones" loading="lazy" />
           </div>
 
           <a href="https://www.instagram.com/festival_pewma_antu" class="btn btn--dark btn--block" target="_blank" rel="noopener">
@@ -708,6 +720,6 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
