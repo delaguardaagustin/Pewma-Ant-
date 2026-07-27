@@ -215,9 +215,26 @@ function initHeroCarousel() {
   if (!carousel) return;
 
   const slides = Array.from(carousel.querySelectorAll(".hero__slide"));
-  const dots = Array.from(carousel.querySelectorAll(".hero__dot"));
   const prevBtn = document.getElementById("prevSlide");
   const nextBtn = document.getElementById("nextSlide");
+
+  // Genera un punto indicador por cada foto (soporta cualquier cantidad)
+  const indicators = document.getElementById("heroIndicators");
+  const dots = [];
+  if (indicators) {
+    indicators.innerHTML = "";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "hero__dot" + (i === 0 ? " hero__dot--active" : "");
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      dot.setAttribute("aria-label", "Ir a la foto " + (i + 1));
+      dot.dataset.index = i;
+      dot.addEventListener("click", () => { goToSlide(i); startAutoplay(); });
+      indicators.appendChild(dot);
+      dots.push(dot);
+    });
+  }
 
   let current = 0;
   let autoplayTimer = null;
@@ -249,13 +266,6 @@ function initHeroCarousel() {
 
   prevBtn?.addEventListener("click", () => { prev(); startAutoplay(); });
   nextBtn?.addEventListener("click", () => { next(); startAutoplay(); });
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      goToSlide(Number(dot.dataset.index));
-      startAutoplay();
-    });
-  });
 
   carousel.addEventListener("mouseenter", stopAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
