@@ -527,16 +527,19 @@ function initParticipantsMap() {
     "</div>";
   bindTooltip(chilePin, hostHtml, null);
 
-  // --- Pines de cada país ---
+  // --- Pines de cada país (el pin completo es enlace a su Instagram) ---
   PARTICIPANTES.forEach((p) => {
-    const pin = document.createElement("button");
+    const pin = document.createElement("a");
     pin.className = "map-pin";
+    pin.href = p.ig;
+    pin.target = "_blank";
+    pin.rel = "noopener";
     pin.style.left = p.x + "%";
     pin.style.top = p.y + "%";
     pin.style.setProperty("--pin-color", COLORES_ANIO[p.anio]);
     pin.dataset.anio = p.anio;
     pin.innerHTML = '<span class="map-pin__flag">' + p.flag + "</span>";
-    pin.setAttribute("aria-label", p.pais + ", participó en " + p.anio + " con " + p.grupo);
+    pin.setAttribute("aria-label", p.pais + ", participó en " + p.anio + " con " + p.grupo + ". Abre su Instagram");
 
     const html =
       '<span class="map-tooltip__flag">' + p.flag + "</span>" +
@@ -544,7 +547,7 @@ function initParticipantsMap() {
       '<strong class="map-tooltip__country">' + p.pais + "</strong>" +
       '<span class="map-tooltip__badge" style="background:' + COLORES_ANIO[p.anio] + '">Edición ' + p.anio + "</span>" +
       '<span class="map-tooltip__group">' + p.grupo + "</span>" +
-      '<a class="map-tooltip__link" href="' + p.ig + '" target="_blank" rel="noopener">Ver en Instagram →</a>' +
+      '<span class="map-tooltip__link">Ver en Instagram →</span>' +
       "</div>";
     bindTooltip(pin, html, p.anio);
     map.appendChild(pin);
@@ -593,11 +596,15 @@ function initParticipantsMap() {
     pin.addEventListener("mouseleave", hide);
     pin.addEventListener("focus", show);
     pin.addEventListener("blur", hide);
-    pin.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (activePin === pin && tooltip.classList.contains("is-visible")) hide();
-      else show();
-    });
+    // Los pines-país son enlaces: el clic navega a Instagram (no se intercepta).
+    // El pin de Chile es un botón: el clic solo muestra/oculta su globo.
+    if (pin.tagName !== "A") {
+      pin.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (activePin === pin && tooltip.classList.contains("is-visible")) hide();
+        else show();
+      });
+    }
   }
 
   function positionTooltip(pin) {
