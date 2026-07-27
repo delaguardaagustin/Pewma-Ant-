@@ -843,8 +843,37 @@ button:focus-visible {
 .sponsors__logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   flex: 1;
+  justify-content: flex-end;
+}
+
+/* Tarjeta blanca para cada logo de patrocinador */
+.sponsor-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  width: 190px;
+  padding: 16px 22px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.sponsor-card img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .sponsor-badge {
@@ -2270,7 +2299,9 @@ button:focus-visible {
   .schedule-item__info h3 { font-size: 0.82rem; }
   .schedule-item__tag { display: none; }
 
-  .sponsors__inner { flex-direction: column; align-items: flex-start; }
+  .sponsors__inner { flex-direction: column; align-items: center; text-align: center; }
+  .sponsors__logos { justify-content: center; }
+  .sponsor-card { width: 160px; height: 84px; }
 
   .back-to-top { width: 40px; height: 40px; bottom: 18px; right: 18px; }
 }
