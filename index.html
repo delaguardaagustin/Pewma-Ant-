@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=18" />
+  <link rel="stylesheet" href="css/styles.css?v=19" />
 </head>
 <body>
 
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <a href="#agrupaciones" class="navbar__link">Agrupaciones</a>
+        <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="navbar__link" target="_blank" rel="noopener">Agrupaciones</a>
 
         <div class="navbar__item navbar__item--dropdown">
           <button class="navbar__link navbar__dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -238,7 +238,7 @@
     <!-- ===== FRANJA DE ACCESOS RÁPIDOS ===== -->
     <section class="quick-links" id="agrupaciones" aria-label="Accesos rápidos">
       <div class="container quick-links__grid">
-        <a href="#agrupaciones" class="quick-link fade-in">
+        <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="quick-link fade-in" target="_blank" rel="noopener">
           <svg class="quick-link__icon" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.3-3.6 4.2-5.6 7.5-5.6s6.2 2 7.5 5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           <span class="quick-link__title">Agrupaciones</span>
           <span class="quick-link__text">Postula tu agrupación y sé parte del festival</span>
@@ -309,14 +309,13 @@
       </div>
     </section>
 
-    <!-- ===== LA VISIÓN DE JEREMY ARMIJO ===== -->
+    <!-- ===== PALABRAS DEL DIRECTOR ===== -->
     <section class="vision" id="vision" aria-label="Palabras del director">
       <div class="container vision__inner fade-in">
-        <span class="vision__eyebrow">Jeremy Armijo · Fundador y director</span>
         <h2 class="section-title section-title--center">Palabras del director</h2>
-        <p>Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
+        <p>Para el Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Nuestra visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
         <p>Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.</p>
-        <p>El sueño de Jeremy Armijo es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.</p>
+        <p>Nuestro sueño es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.</p>
       </div>
     </section>
 
@@ -711,6 +710,10 @@
           <a class="sponsor-card" href="https://www.instagram.com/garrison_tavern_" target="_blank" rel="noopener" aria-label="Garrison Tavern Pizzas en Instagram">
             <img src="img/sponsor-garrison.jpg" alt="Garrison Tavern Pizzas" loading="lazy" />
           </a>
+          <!-- TODO: enlazar al Instagram real de Ariztia cuando se tenga la URL -->
+          <div class="sponsor-card">
+            <img src="img/sponsor-ariztia.jpg" alt="Ariztia" loading="lazy" />
+          </div>
         </div>
       </div>
     </section>
@@ -764,7 +767,35 @@
         </div>
       </div>
     </div>
+
+    <div class="footer__org">
+      <span class="footer__org-label">Organizado por</span>
+      <img src="img/corporacion-pewmahetuu.jpg" alt="Corporación Cultural Pewma Hetu'u" class="footer__org-logo" loading="lazy" />
+    </div>
   </footer>
+
+  <!-- ===== VENTANA DE NOTICIAS (aparece al abrir la página) ===== -->
+  <div class="news-modal" id="newsModal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle" hidden>
+    <div class="news-modal__backdrop" data-close="1"></div>
+    <div class="news-modal__panel">
+      <button class="news-modal__close" id="newsModalClose" aria-label="Cerrar ventana">&times;</button>
+      <span class="news-modal__eyebrow">📣 Noticias destacadas</span>
+      <h2 class="news-modal__title" id="newsModalTitle">Festival Pewma Antü 2027</h2>
+      <div class="news-modal__items">
+        <article class="news-modal__item">
+          <span class="news-modal__date">15 de junio, 2026</span>
+          <h3>Convocatoria abierta para agrupaciones 2027</h3>
+          <p>Ya están abiertas las postulaciones para ser parte de la próxima edición del Festival Pewma Antü.</p>
+          <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="btn btn--gold" target="_blank" rel="noopener">Postular ahora</a>
+        </article>
+        <article class="news-modal__item">
+          <span class="news-modal__date">28 de enero, 2026</span>
+          <h3>Éxito total en la edición 2026</h3>
+          <p>Miles de personas vibraron con la música, la danza y la cultura de las agrupaciones nacionales e internacionales.</p>
+        </article>
+      </div>
+    </div>
+  </div>
 
   <!-- Botón flotante de música (himno) -->
   <button class="music-fab" id="musicToggle" aria-label="Reproducir o pausar el himno" aria-pressed="false">
@@ -782,6 +813,6 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <script src="js/main.js?v=16"></script>
+  <script src="js/main.js?v=19"></script>
 </body>
 </html>

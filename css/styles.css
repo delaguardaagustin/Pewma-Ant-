@@ -2153,6 +2153,123 @@ button:focus-visible {
 }
 
 /* ============================================
+   FOOTER · ORGANIZA (Corporación Pewma Hetu'u)
+   ============================================ */
+.footer__org {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 26px 20px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__org-label {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer__org-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 0 0 1.5px rgba(217, 179, 84, 0.4), 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   VENTANA DE NOTICIAS (modal)
+   ============================================ */
+.news-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.news-modal[hidden] { display: none; }
+
+.news-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 9, 18, 0.78);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.news-modal.is-open .news-modal__backdrop { opacity: 1; }
+
+.news-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--bg-dark-3), var(--bg-dark-2));
+  border: 1px solid rgba(217, 179, 84, 0.35);
+  border-radius: 18px;
+  padding: 34px 30px 30px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  transform: translateY(24px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1), opacity 0.35s ease;
+}
+
+.news-modal.is-open .news-modal__panel { transform: translateY(0) scale(1); opacity: 1; }
+
+.news-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.news-modal__close:hover { background: rgba(255, 255, 255, 0.18); transform: rotate(90deg); }
+
+.news-modal__eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.news-modal__title {
+  font-family: var(--font-serif);
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin: 6px 0 18px;
+}
+
+.news-modal__items { display: flex; flex-direction: column; gap: 18px; }
+
+.news-modal__item {
+  border-left: 3px solid var(--gold);
+  padding-left: 14px;
+}
+
+.news-modal__item h3 { color: var(--text-light); font-size: 1.05rem; margin: 3px 0 6px; }
+.news-modal__item p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 12px; }
+.news-modal__date { color: var(--gold); font-size: 0.78rem; font-weight: 600; }
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 

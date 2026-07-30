@@ -15,7 +15,37 @@ document.addEventListener("DOMContentLoaded", () => {
   initChileRouteMap();
   initReviewForm();
   initBackgroundMusic();
+  initNewsModal();
 });
+
+/* ---------- Ventana de noticias al abrir la página ---------- */
+function initNewsModal() {
+  const modal = document.getElementById("newsModal");
+  if (!modal) return;
+  const closeBtn = document.getElementById("newsModalClose");
+
+  const abrir = () => {
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add("is-open"));
+    document.body.style.overflow = "hidden"; // evita scroll de fondo mientras está abierta
+  };
+  const cerrar = () => {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    setTimeout(() => { modal.hidden = true; }, 300);
+  };
+
+  closeBtn?.addEventListener("click", cerrar);
+  // Cierra al tocar el fondo oscuro o con la tecla Escape
+  modal.addEventListener("click", (e) => { if (e.target.dataset.close) cerrar(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) cerrar(); });
+
+  // Aparece al abrir la página, una vez por visita
+  if (!sessionStorage.getItem("newsModalVisto")) {
+    setTimeout(abrir, 800);
+    sessionStorage.setItem("newsModalVisto", "1");
+  }
+}
 
 /* ---------- Himno al iniciar la página ----------
    Los navegadores bloquean el audio automático con sonido, así que:
