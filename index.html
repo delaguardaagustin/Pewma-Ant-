@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=22" />
+  <link rel="stylesheet" href="css/styles.css?v=23" />
 </head>
 <body>
 
@@ -81,6 +81,11 @@
         <a href="https://www.youtube.com/@FNIPewmant%C3%BC" class="navbar__link" target="_blank" rel="noopener">Transmisión en vivo</a>
         <a href="#contacto" class="navbar__link">Contacto</a>
       </nav>
+
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-switch__btn is-active" data-lang="es">ES</button>
+        <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+      </div>
 
       <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
@@ -313,7 +318,7 @@
     <section class="vision" id="vision" aria-label="Palabras del director">
       <div class="container vision__inner fade-in">
         <h2 class="section-title section-title--center">Palabras del director</h2>
-        <p>Para el Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Nuestra visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
+        <p>Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.</p>
         <p>Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.</p>
         <p>Nuestro sueño es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.</p>
       </div>
@@ -485,6 +490,19 @@
       </div>
     </section>
 
+    <!-- ===== CAMPEONES DE CUECA ===== -->
+    <section class="champions" id="campeones" aria-label="Campeones de cueca">
+      <div class="container">
+        <span class="champions__eyebrow fade-in">🏆 Nuestros campeones</span>
+        <h2 class="section-title section-title--center fade-in">1er Campeonato Abierto de Cueca Pewma Antü 2026</h2>
+        <p class="champions__subtitle fade-in">Un espacio para celebrar a los ganadores de nuestro primer campeonato de cueca, que serán parte de esta gran fiesta cultural.</p>
+        <div class="champions__placeholder fade-in">
+          <span class="champions__placeholder-icon" aria-hidden="true">📸</span>
+          <p>Muy pronto publicaremos aquí las fotos de los campeones.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== NOTICIAS / PROGRAMACIÓN / INSTAGRAM ===== -->
     <section class="hub" aria-label="Noticias, programación e Instagram">
       <div class="container hub__grid">
@@ -497,20 +515,39 @@
           </div>
 
           <article class="news-card">
-            <img src="img/pasacalle-amarillo.jpg" alt="Jóvenes bailarines con trajes amarillos en el pasacalle" loading="lazy" />
+            <img src="img/galeria-13.jpg" alt="Gran final del festival en el escenario" loading="lazy" />
             <div class="news-card__body">
-              <h3 class="news-card__title">Convocatoria abierta para agrupaciones 2027</h3>
-              <span class="news-card__date">15 de junio, 2026</span>
-              <p class="news-card__excerpt">Ya están abiertas las postulaciones para ser parte de la próxima edición del Festival Pewma Antü.</p>
+              <h3 class="news-card__title">4º Encuentro Folklórico "Encuentro de las Estrellas"</h3>
+              <span class="news-card__date">5 de septiembre</span>
+              <p class="news-card__excerpt">Este 5 de septiembre celebraremos nuestro 4º encuentro folklórico en la comuna de La Cisterna.</p>
             </div>
           </article>
 
           <article class="news-card">
-            <img src="img/grupo-internacional.jpg" alt="Delegaciones internacionales del festival con sus banderas" loading="lazy" />
+            <img src="img/galeria-03.jpg" alt="Bailarín de cueca en el escenario" loading="lazy" />
             <div class="news-card__body">
-              <h3 class="news-card__title">Éxito total en la edición 2026</h3>
-              <span class="news-card__date">28 de enero, 2026</span>
-              <p class="news-card__excerpt">Miles de personas vibraron con la música, danza y cultura de 11 agrupaciones nacionales e internacionales.</p>
+              <h3 class="news-card__title">1er Campeonato Abierto de Cueca Pewma Antü</h3>
+              <span class="news-card__date">Abril</span>
+              <p class="news-card__excerpt">Realizamos el 1er campeonato abierto de cueca. Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <img src="img/grupo-internacional.jpg" alt="Delegaciones del festival con sus banderas" loading="lazy" />
+            <div class="news-card__body">
+              <h3 class="news-card__title">Nuevas comunas se suman al circuito 2027</h3>
+              <span class="news-card__date">2027</span>
+              <p class="news-card__excerpt">Con alegría damos la bienvenida a Rancagua, Romeral y Padre Hurtado, que se suman al circuito cultural del festival 2027.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <img src="img/pasacalle-amarillo.jpg" alt="Jóvenes bailarines en el pasacalle" loading="lazy" />
+            <div class="news-card__body">
+              <h3 class="news-card__title">Convocatoria abierta para agrupaciones 2028</h3>
+              <span class="news-card__date">Postulaciones abiertas</span>
+              <p class="news-card__excerpt">Ya están abiertas las postulaciones para las agrupaciones de la edición 2028 del Festival Pewma Antü.</p>
+              <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="news-card__link" target="_blank" rel="noopener">Postular →</a>
             </div>
           </article>
         </div>
@@ -680,19 +717,22 @@
       </div>
     </section>
 
-    <!-- ===== AUSPICIADORES ===== -->
-    <section class="sponsors" id="auspiciadores" aria-label="Auspiciadores y colaboradores">
+    <!-- ===== COLABORADORES ===== -->
+    <section class="sponsors" id="colaboradores" aria-label="Colaboradores">
       <div class="container">
         <div class="sponsors__head fade-in">
           <span class="sponsors__eyebrow">Quienes hacen posible el festival</span>
-          <h2 class="section-title section-title--center">Nuestros auspiciadores</h2>
-          <p class="sponsors__intro">Gracias por apoyar la cultura y el folklore, y hacen posible cada edición del Festival Pewma Antü.</p>
+          <h2 class="section-title section-title--center">Nuestros colaboradores</h2>
+          <p class="sponsors__intro">Gracias por apoyar la cultura y el folklore, y hacer posible cada edición del Festival Pewma Antü.</p>
         </div>
         <div class="sponsors__logos fade-in">
+          <div class="sponsor-card">
+            <img src="img/corporacion-pewmahetuu.jpg" alt="Corporación Cultural Pewma Hetu'u" loading="lazy" />
+          </div>
           <a class="sponsor-card" href="https://www.instagram.com/tu.cuerpo.mi.foto" target="_blank" rel="noopener" aria-label="Tú cuerpo, mi foto en Instagram">
             <img src="img/sponsor-tucuerpo.png" alt="Tú cuerpo, mi foto — fotografía" loading="lazy" />
           </a>
-          <a class="sponsor-card" href="https://www.instagram.com/tiendalaoriental" target="_blank" rel="noopener" aria-label="La Oriental en Instagram">
+          <a class="sponsor-card" href="https://laoriental.cl/" target="_blank" rel="noopener" aria-label="La Oriental, sitio web">
             <img src="img/sponsor-laoriental.jpg" alt="La Oriental, desde 1960" loading="lazy" />
           </a>
           <a class="sponsor-card" href="https://www.instagram.com/garrison_tavern_" target="_blank" rel="noopener" aria-label="Garrison Tavern Pizzas en Instagram">
@@ -756,10 +796,6 @@
       </div>
     </div>
 
-    <div class="footer__org">
-      <span class="footer__org-label">Organizado por</span>
-      <img src="img/corporacion-pewmahetuu.jpg" alt="Corporación Cultural Pewma Hetu'u" class="footer__org-logo" loading="lazy" />
-    </div>
   </footer>
 
   <!-- ===== VENTANA DE NOTICIAS (aparece al abrir la página) ===== -->
@@ -768,18 +804,23 @@
     <div class="news-modal__panel">
       <button class="news-modal__close" id="newsModalClose" aria-label="Cerrar ventana">&times;</button>
       <span class="news-modal__eyebrow">📣 Noticias destacadas</span>
-      <h2 class="news-modal__title" id="newsModalTitle">Festival Pewma Antü 2027</h2>
+      <h2 class="news-modal__title" id="newsModalTitle">Festival Pewma Antü</h2>
       <div class="news-modal__items">
         <article class="news-modal__item">
-          <span class="news-modal__date">15 de junio, 2026</span>
-          <h3>Convocatoria abierta para agrupaciones 2027</h3>
-          <p>Ya están abiertas las postulaciones para ser parte de la próxima edición del Festival Pewma Antü.</p>
-          <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="btn btn--gold" target="_blank" rel="noopener">Postular ahora</a>
+          <span class="news-modal__date">5 de septiembre · La Cisterna</span>
+          <h3>4º Encuentro Folklórico "Encuentro de las Estrellas"</h3>
+          <p>Este 5 de septiembre celebraremos nuestro 4º encuentro folklórico en la comuna de La Cisterna.</p>
         </article>
         <article class="news-modal__item">
-          <span class="news-modal__date">28 de enero, 2026</span>
-          <h3>Éxito total en la edición 2026</h3>
-          <p>Miles de personas vibraron con la música, la danza y la cultura de las agrupaciones nacionales e internacionales.</p>
+          <span class="news-modal__date">Abril</span>
+          <h3>1er Campeonato Abierto de Cueca Pewma Antü</h3>
+          <p>Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.</p>
+        </article>
+        <article class="news-modal__item">
+          <span class="news-modal__date">Postulaciones abiertas</span>
+          <h3>Convocatoria para agrupaciones 2028</h3>
+          <p>Ya están abiertas las postulaciones para la edición 2028 del Festival Pewma Antü.</p>
+          <a href="https://docs.google.com/forms/d/1DiutEuJFgdkJIMiUUsCLzcAjeJ8zK-mjoTYxOxi1bxI/viewform" class="btn btn--gold" target="_blank" rel="noopener">Postular ahora</a>
         </article>
       </div>
     </div>
@@ -801,6 +842,6 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <script src="js/main.js?v=19"></script>
+  <script src="js/main.js?v=23"></script>
 </body>
 </html>

@@ -16,7 +16,160 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewForm();
   initBackgroundMusic();
   initNewsModal();
+  initI18n();
 });
+
+/* ---------- Traducción español / inglés ---------- */
+function initI18n() {
+  const botones = document.querySelectorAll(".lang-switch__btn");
+  if (!botones.length) return;
+
+  // Diccionario español -> inglés del contenido principal.
+  const EN = {
+    // Navegación
+    "Inicio": "Home",
+    "El Festival": "The Festival",
+    "Sobre el festival": "About the festival",
+    "Palabras del director": "Director's Words",
+    "Nuestro equipo": "Our Team",
+    "Países participantes": "Participating Countries",
+    "El himno": "The Anthem",
+    "Programación": "Schedule",
+    "Próxima programación": "Upcoming Schedule",
+    "Calendario completo": "Full calendar",
+    "Agrupaciones": "Groups",
+    "Galería": "Gallery",
+    "Fotos": "Photos",
+    "Videos": "Videos",
+    "Noticias": "News",
+    "Transmisión en vivo": "Live stream",
+    "Contacto": "Contact",
+    // Hero
+    "Festival Nacional e Internacional de Folklore": "National and International Folklore Festival",
+    "Un espacio de encuentro, intercambio cultural y celebración de nuestras raíces a través de la música, la danza y la tradición de los pueblos.": "A place for gathering, cultural exchange and celebration of our roots through the music, dance and traditions of our peoples.",
+    "Conoce más": "Learn more",
+    "Ver video": "Watch video",
+    // Tarjeta de edición
+    "Próxima edición": "Next edition",
+    "14 al 26 de enero": "January 14 to 26",
+    "Regiones Metropolitana, O'Higgins, Maule y Valparaíso": "Metropolitana, O'Higgins, Maule and Valparaíso regions",
+    "Días": "Days", "Horas": "Hours", "Min": "Min", "Seg": "Sec",
+    // Accesos rápidos
+    "Postula tu agrupación y sé parte del festival": "Apply with your group and be part of the festival",
+    "Revisa fechas, horarios y actividades del festival": "Check the festival's dates, times and activities",
+    "Disfruta del festival desde cualquier lugar": "Enjoy the festival from anywhere",
+    "Fotos y videos de versiones anteriores": "Photos and videos from previous editions",
+    // Sobre el festival
+    "El Encuentro de las Estrellas": "The Gathering of the Stars",
+    "El Festival Pewma Antü nació en Chile con el propósito de ser un puente vivo entre las culturas del mundo a través de la música y la danza tradicional. Diseñado como una experiencia itinerante, este encuentro lleva color, ritmo y espectáculos de primer nivel directo al corazón de las comunidades locales, transformando plazas y teatros en escenarios de hermandad.": "The Pewma Antü Festival was born in Chile with the purpose of being a living bridge between the world's cultures through traditional music and dance. Designed as a traveling experience, this gathering brings color, rhythm and top-level shows straight to the heart of local communities, turning squares and theaters into stages of fellowship.",
+    "Con los años, el festival se convirtió en un verdadero hogar anual. Inspirados por el espíritu de nuestro himno de Jeremy Armijo, cada edición abrimos las puertas para decir: ¡Bienvenidos, viajeros de corazón! Aquí no hay fronteras ni competencias, solo una gran familia global que se reúne para compartir las risas tras bambalinas, la magia de las raíces y el brillo de cada tradición.": "Over the years, the festival became a true annual home. Inspired by the spirit of our anthem by Jeremy Armijo, each edition we open our doors to say: Welcome, travelers of the heart! Here there are no borders or competitions, only one big global family that gathers to share the laughter backstage, the magic of our roots and the shine of every tradition.",
+    // Himno
+    "Nuestro himno": "Our anthem",
+    "El Himno Pewma Antü": "The Pewma Antü Anthem",
+    "Compuesto por Jeremy Armijo": "Composed by Jeremy Armijo",
+    "🎧 Escúchanos en Spotify": "🎧 Listen to us on Spotify",
+    // Palabras del director
+    "Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.": "For Jeremy Armijo, founder and director of the Pewma Antü Festival, culture is a bridge that unites people beyond borders. His vision is born from the deep conviction that folklore is a tool to strengthen identity, promote respect for diversity and create spaces of encounter between peoples.",
+    "Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.": "With this purpose, the Pewma Antü Festival has established itself as a stage for cultural exchange where artists, delegations and communities from Chile and the world share their traditions, stories and artistic expressions. More than an event, it represents a movement that drives training, integration and cultural development, bringing art to every territory and fostering intercultural dialogue.",
+    "Nuestro sueño es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.": "Our dream is for Pewma Antü to keep growing as a national and international reference, carrying the message that culture, when shared with respect and passion, has the power to transform communities and build a future where traditions stay alive for new generations.",
+    // Banda
+    "Un encuentro de estrellas que une al mundo en Chile.": "A gathering of stars that unites the world in Chile.",
+    "Vive una experiencia transformadora hecha de alegría, vivencias inolvidables y tradiciones vivas. Transformamos los territorios en escenarios de hermandad, donde la música y la danza tejen amistades sin fronteras y conectan el corazón de nuestras comunas con el patrimonio cultural del mundo.": "Live a transformative experience made of joy, unforgettable moments and living traditions. We turn territories into stages of fellowship, where music and dance weave friendships without borders and connect the heart of our towns with the world's cultural heritage.",
+    // Video
+    "Míranos en video": "Watch us",
+    "Revive la energía, el color y la hermandad del Festival Pewma Antü.": "Relive the energy, color and fellowship of the Pewma Antü Festival.",
+    "Ver más videos en nuestro canal de YouTube →": "See more videos on our YouTube channel →",
+    // Mapas
+    "Pasa el cursor —o toca en el móvil— sobre cada país para ver la agrupación y el año en que participó.": "Hover —or tap on mobile— over each country to see its group and the year it took part.",
+    "La ruta del festival · Enero 2027 🇨🇱": "The festival route · January 2027 🇨🇱",
+    "Diez fechas recorriendo las comunas de Chile. Pincha una parada para ver a su agrupación en Instagram.": "Ten dates across the towns of Chile. Tap a stop to see its group on Instagram.",
+    // Galería
+    "Momentos que reflejan la magia, el color y la hermandad del Festival Pewma Antü. Haz clic en una foto para verla en grande.": "Moments that reflect the magic, color and fellowship of the Pewma Antü Festival. Click a photo to view it larger.",
+    // Campeones
+    "🏆 Nuestros campeones": "🏆 Our champions",
+    "1er Campeonato Abierto de Cueca Pewma Antü 2026": "1st Pewma Antü Open Cueca Championship 2026",
+    "Un espacio para celebrar a los ganadores de nuestro primer campeonato de cueca, que serán parte de esta gran fiesta cultural.": "A space to celebrate the winners of our first cueca championship, who will be part of this great cultural celebration.",
+    "Muy pronto publicaremos aquí las fotos de los campeones.": "We'll soon publish the champions' photos here.",
+    // Noticias
+    "Noticias destacadas": "Featured News",
+    "Ver todas →": "See all →",
+    "4º Encuentro Folklórico \"Encuentro de las Estrellas\"": "4th Folklore Gathering \"Gathering of the Stars\"",
+    "5 de septiembre": "September 5",
+    "Este 5 de septiembre celebraremos nuestro 4º encuentro folklórico en la comuna de La Cisterna.": "On September 5 we will hold our 4th folklore gathering in the town of La Cisterna.",
+    "1er Campeonato Abierto de Cueca Pewma Antü": "1st Pewma Antü Open Cueca Championship",
+    "Abril": "April",
+    "Realizamos el 1er campeonato abierto de cueca. Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.": "We held our 1st open cueca championship. Its winners will be part of this cultural celebration, alongside the national and international groups.",
+    "Nuevas comunas se suman al circuito 2027": "New towns join the 2027 circuit",
+    "Con alegría damos la bienvenida a Rancagua, Romeral y Padre Hurtado, que se suman al circuito cultural del festival 2027.": "We happily welcome Rancagua, Romeral and Padre Hurtado, joining the festival's 2027 cultural circuit.",
+    "Convocatoria abierta para agrupaciones 2028": "Applications open for 2028 groups",
+    "Postulaciones abiertas": "Applications open",
+    "Ya están abiertas las postulaciones para las agrupaciones de la edición 2028 del Festival Pewma Antü.": "Applications are now open for the groups of the 2028 edition of the Pewma Antü Festival.",
+    "Postular →": "Apply →",
+    "Ver programación completa": "See full schedule",
+    "Ver calendario →": "See calendar →",
+    "ENE": "JAN",
+    // Instagram
+    "Seguir en Instagram →": "Follow on Instagram →",
+    "Ver más en Instagram": "See more on Instagram",
+    // Reseñas
+    "Comparte tu experiencia": "Share your experience",
+    "¿Viviste el Festival Pewma Antü? Cuéntanos qué significó para ti. Tu reseña nos ayuda a seguir creciendo.": "Did you experience the Pewma Antü Festival? Tell us what it meant to you. Your review helps us keep growing.",
+    "Enviar reseña": "Send review",
+    // Colaboradores
+    "Quienes hacen posible el festival": "Those who make the festival possible",
+    "Nuestros colaboradores": "Our Collaborators",
+    "Gracias por apoyar la cultura y el folklore, y hacer posible cada edición del Festival Pewma Antü.": "Thank you for supporting culture and folklore, and making every edition of the Pewma Antü Festival possible.",
+    // Equipo
+    "Las personas que hacen posible el Festival Pewma Antü.": "The people who make the Pewma Antü Festival possible.",
+    // Footer
+    "— Encuentro de las Estrellas —": "— Gathering of the Stars —",
+    "© 2026 Festival Pewma Antü. Todos los derechos reservados.": "© 2026 Pewma Antü Festival. All rights reserved.",
+    "Términos y Condiciones": "Terms and Conditions",
+    "Política de Privacidad": "Privacy Policy",
+    "Síguenos": "Follow us",
+    "Contador de visitas": "Visitor counter",
+    // Modal de noticias
+    "📣 Noticias destacadas": "📣 Featured news",
+    "5 de septiembre · La Cisterna": "September 5 · La Cisterna",
+    "Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.": "Its winners will be part of this cultural celebration, alongside the national and international groups.",
+    "Convocatoria para agrupaciones 2028": "Applications for 2028 groups",
+    "Ya están abiertas las postulaciones para la edición 2028 del Festival Pewma Antü.": "Applications are now open for the 2028 edition of the Pewma Antü Festival.",
+    "Postular ahora": "Apply now",
+  };
+
+  // Recolecta los nodos de texto traducibles (funciona aunque el botón tenga íconos)
+  const raices = document.querySelectorAll("nav, main, footer, .news-modal");
+  const nodos = [];
+  raices.forEach((raiz) => {
+    const walker = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const tag = n.parentNode && n.parentNode.nodeName;
+        if (tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+    let n;
+    while ((n = walker.nextNode())) { n.__es = n.nodeValue; nodos.push(n); }
+  });
+
+  function traducir(lang) {
+    nodos.forEach((n) => {
+      if (lang === "en") { const t = EN[n.__es.trim()]; if (t) n.nodeValue = t; }
+      else n.nodeValue = n.__es;
+    });
+    document.documentElement.lang = lang;
+    botones.forEach((b) => b.classList.toggle("is-active", b.dataset.lang === lang));
+    try { localStorage.setItem("idioma", lang); } catch (e) {}
+  }
+
+  botones.forEach((b) => b.addEventListener("click", () => traducir(b.dataset.lang)));
+
+  // Recuerda el idioma elegido
+  let inicial = "es";
+  try { inicial = localStorage.getItem("idioma") || "es"; } catch (e) {}
+  if (inicial === "en") traducir("en");
+}
 
 /* ---------- Ventana de noticias al abrir la página ---------- */
 function initNewsModal() {

@@ -322,6 +322,31 @@ button:focus-visible {
 
 .navbar__donate { padding: 11px 24px; font-size: 0.85rem; flex-shrink: 0; }
 
+/* Selector de idioma ES / EN */
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(217, 179, 84, 0.35);
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+.lang-switch__btn {
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch__btn.is-active {
+  background: var(--gold);
+  color: #241a05;
+}
+
 .navbar__toggle {
   display: flex;
   flex-direction: column;
@@ -732,6 +757,16 @@ button:focus-visible {
   color: var(--text-dark-muted);
   line-height: 1.4;
 }
+
+.news-card__link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #b08a2e;
+}
+
+.news-card__link:hover { color: var(--gold); }
 
 /* Programación */
 .schedule-list {
@@ -1820,6 +1855,43 @@ button:focus-visible {
 }
 
 .map-tooltip__link:hover { color: var(--gold); }
+
+/* ============================================
+   CAMPEONES DE CUECA
+   ============================================ */
+.champions {
+  padding: 90px 0;
+  background: var(--bg-dark-2);
+  text-align: center;
+}
+
+.champions__eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.champions__subtitle {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto 2.4rem;
+}
+
+.champions__placeholder {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border: 1px dashed rgba(217, 179, 84, 0.4);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+}
+
+.champions__placeholder-icon { font-size: 2.4rem; display: block; margin-bottom: 10px; }
 
 /* ============================================
    VIDEO
