@@ -1822,6 +1822,53 @@ button:focus-visible {
 .map-tooltip__link:hover { color: var(--gold); }
 
 /* ============================================
+   VIDEO
+   ============================================ */
+.video {
+  padding: 90px 0;
+  background: var(--bg-dark);
+}
+
+.video__subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.4rem;
+}
+
+.video__frame {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(217, 179, 84, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video__channel {
+  display: block;
+  text-align: center;
+  margin-top: 1.6rem;
+  color: var(--gold);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.video__channel:hover { color: var(--gold-light); }
+
+/* ============================================
    MAPA DE LA RUTA POR CHILE
    ============================================ */
 .chilemap { margin-top: 4rem; }
