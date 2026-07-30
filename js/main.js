@@ -16,8 +16,42 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewForm();
   initBackgroundMusic();
   initNewsModal();
+  initCounters();
   initI18n();
 });
+
+/* ---------- Contadores animados de estadísticas ---------- */
+function initCounters() {
+  const nums = document.querySelectorAll(".stat__num[data-count]");
+  if (!nums.length) return;
+
+  const animar = (el) => {
+    const objetivo = Number(el.dataset.count);
+    const prefijo = el.dataset.prefix || "";
+    const pasos = 45;
+    let i = 0;
+    const timer = setInterval(() => {
+      i++;
+      const p = i / pasos;
+      const val = Math.floor((1 - Math.pow(1 - p, 3)) * objetivo); // easing out
+      el.textContent = prefijo + val.toLocaleString("es-CL");
+      if (i >= pasos) {
+        clearInterval(timer);
+        el.textContent = prefijo + objetivo.toLocaleString("es-CL");
+      }
+    }, 1400 / pasos);
+  };
+
+  if (!("IntersectionObserver" in window)) { nums.forEach(animar); return; }
+
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { animar(e.target); o.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+
+  nums.forEach((n) => obs.observe(n));
+}
 
 /* ---------- Traducción español / inglés ---------- */
 function initI18n() {
@@ -128,6 +162,18 @@ function initI18n() {
     "Política de Privacidad": "Privacy Policy",
     "Síguenos": "Follow us",
     "Contador de visitas": "Visitor counter",
+    // Estadísticas
+    "El festival en cifras": "The festival in numbers",
+    "Pewma Antü en números": "Pewma Antü in numbers",
+    "Regiones": "Regions",
+    "Comunas": "Towns",
+    "Agrupaciones": "Groups",
+    "Asistentes": "Attendees",
+    "🌎 Artistas internacionales": "🌎 International artists",
+    "🎟️ Actividades gratuitas": "🎟️ Free activities",
+    "🎓 Talleres educativos culturales": "🎓 Cultural educational workshops",
+    "¿Quieres sumarte como colaborador y ser parte de esta fiesta cultural?": "Would you like to join as a collaborator and be part of this cultural celebration?",
+    "Quiero ser colaborador": "I want to collaborate",
     // Modal de noticias
     "📣 Noticias destacadas": "📣 Featured news",
     "5 de septiembre · La Cisterna": "September 5 · La Cisterna",
@@ -144,8 +190,12 @@ function initI18n() {
     const walker = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        const tag = n.parentNode && n.parentNode.nodeName;
+        const p = n.parentNode;
+        const tag = p && p.nodeName;
         if (tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_REJECT;
+        // No tocar números que se actualizan solos (contadores)
+        if (p && p.closest && p.closest(".stat__num, .countdown__number, .footer__counter-digits"))
+          return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       },
     });

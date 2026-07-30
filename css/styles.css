@@ -1857,6 +1857,89 @@ button:focus-visible {
 .map-tooltip__link:hover { color: var(--gold); }
 
 /* ============================================
+   ESTADÍSTICAS / CIFRAS
+   ============================================ */
+.stats {
+  padding: 90px 0;
+  background: var(--bg-dark-2);
+  text-align: center;
+}
+
+.stats__eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 900px;
+  margin: 0.6rem auto 0;
+}
+
+.stat {
+  padding: 26px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(217, 179, 84, 0.18);
+  border-radius: 16px;
+}
+
+.stat__num {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__label {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.stats__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2.4rem;
+}
+
+.stats__tag {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(217, 179, 84, 0.1);
+  border: 1px solid rgba(217, 179, 84, 0.3);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Invitación a sumar colaboradores */
+.sponsors__cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.sponsors__cta-text {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ============================================
    CAMPEONES DE CUECA
    ============================================ */
 .champions {
@@ -2507,6 +2590,8 @@ button:focus-visible {
 /* Móvil / 480px */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+
+  .stats__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 
   /* Navbar compacta: evita que la hamburguesa se salga en pantallas angostas */
   .navbar__container { padding-left: 16px; padding-right: 16px; }
