@@ -1175,10 +1175,10 @@ button:focus-visible {
   margin-bottom: 0.8rem;
 }
 
-/* Todos los párrafos con el mismo formato y en negrita */
+/* Todos los párrafos con el mismo formato, sin negrita */
 .vision__inner p {
   color: var(--text-light);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.05rem;
   margin-bottom: 1.3rem;
 }
