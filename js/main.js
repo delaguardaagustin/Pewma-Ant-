@@ -17,8 +17,46 @@ document.addEventListener("DOMContentLoaded", () => {
   initBackgroundMusic();
   initNewsModal();
   initCounters();
+  initVisitCounter();
   initI18n();
 });
+
+/* ---------- Contador real de visitas ----------
+   Sitio estático (GitHub Pages) sin backend: usamos CounterAPI (gratuito,
+   sin registro) para llevar un conteo global real. Cada navegador suma 1
+   solo la primera vez; en visitas siguientes se muestra el último valor
+   conocido, para que el número refleje personas y no recargas. */
+function initVisitCounter() {
+  const cont = document.getElementById("visitCounter");
+  if (!cont) return;
+  const digitos = cont.querySelectorAll("span");
+  if (!digitos.length) return;
+
+  const API = "https://api.counterapi.dev/v1/festival-pewma-antu/visitas/up";
+  const N = digitos.length;
+
+  const pintar = (n) => {
+    const s = String(n).padStart(N, "0").slice(-N);
+    digitos.forEach((d, i) => { d.textContent = s[i]; });
+  };
+
+  const guardado = localStorage.getItem("pewmaVisitas");
+  if (localStorage.getItem("pewmaVisitaContada") && guardado) {
+    pintar(guardado);
+    return;
+  }
+
+  fetch(API)
+    .then((r) => r.json())
+    .then((d) => {
+      const n = d && (d.count != null ? d.count : d.value);
+      if (n == null) return;
+      localStorage.setItem("pewmaVisitas", n);
+      localStorage.setItem("pewmaVisitaContada", "1");
+      pintar(n);
+    })
+    .catch(() => { if (guardado) pintar(guardado); });
+}
 
 /* ---------- Contadores animados de estadísticas ---------- */
 function initCounters() {
@@ -121,6 +159,10 @@ function initI18n() {
     "Momentos que reflejan la magia, el color y la hermandad del Festival Pewma Antü. Haz clic en una foto para verla en grande.": "Moments that reflect the magic, color and fellowship of the Pewma Antü Festival. Click a photo to view it larger.",
     // Campeones
     "🏆 Nuestros campeones": "🏆 Our champions",
+    "Infantil": "Children",
+    "Juvenil": "Youth",
+    "Adulto": "Adult",
+    "Senior": "Senior",
     "1er Campeonato Abierto de Cueca Pewma Antü 2026": "1st Pewma Antü Open Cueca Championship 2026",
     "Un espacio para celebrar a los ganadores de nuestro primer campeonato de cueca, que serán parte de esta gran fiesta cultural.": "A space to celebrate the winners of our first cueca championship, who will be part of this great cultural celebration.",
     "Muy pronto publicaremos aquí las fotos de los campeones.": "We'll soon publish the champions' photos here.",
