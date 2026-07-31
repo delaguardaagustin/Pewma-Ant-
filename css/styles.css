@@ -2055,6 +2055,33 @@ button:focus-visible {
 
 .champions__placeholder-icon { font-size: 2.4rem; display: block; margin-bottom: 10px; }
 
+/* Galería de campeones */
+.champions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 210px;
+  gap: 14px;
+  margin-top: 1rem;
+}
+
+.champions__item {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.champions__item:first-child { grid-column: span 2; grid-row: span 2; }
+
+.champions__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.champions__item:hover img { transform: scale(1.07); }
+
 /* ============================================
    VIDEO
    ============================================ */
@@ -2618,6 +2645,7 @@ button:focus-visible {
   .worldmap__stage { max-width: 440px; }
 
   .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 190px; }
+  .champions__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
 
   /* Mapa de la ruta: una columna, mapa arriba y calendario debajo */
   .chilemap__layout { grid-template-columns: 1fr; gap: 30px; justify-items: center; }
@@ -2683,6 +2711,8 @@ button:focus-visible {
 
   .gallery__grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
   .gallery__item--wide { grid-column: span 1; }
+  .champions__grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .champions__item:first-child { grid-column: span 1; grid-row: span 1; }
 
   .review-form { padding: 22px; }
   .review-form__row { grid-template-columns: 1fr; gap: 0; }
