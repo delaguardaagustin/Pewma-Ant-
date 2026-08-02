@@ -2063,12 +2063,22 @@ button:focus-visible {
   margin-top: 1rem;
 }
 
+/* Marco tipo fotografía instantánea (Polaroid) */
 .champions__item {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 12px 12px 0;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.champions__photo {
   display: block;
   overflow: hidden;
-  border-radius: 12px;
-  position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
+  background: #eee;
 }
 
 .champions__item img {
@@ -2078,20 +2088,23 @@ button:focus-visible {
   transition: transform 0.5s ease;
 }
 
+.champions__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+}
+
 .champions__item:hover img { transform: scale(1.07); }
 
+/* Texto en el borde inferior blanco de la instantánea */
 .champions__cat {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  backdrop-filter: blur(4px);
+  display: block;
+  text-align: center;
+  padding: 12px 6px 16px;
+  color: #2a2a2a;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 /* ============================================

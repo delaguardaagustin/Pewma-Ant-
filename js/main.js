@@ -23,9 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------- Contador real de visitas ----------
    Sitio estático (GitHub Pages) sin backend: usamos CounterAPI (gratuito,
-   sin registro) para llevar un conteo global real. Cada navegador suma 1
-   solo la primera vez; en visitas siguientes se muestra el último valor
-   conocido, para que el número refleje personas y no recargas. */
+   sin registro) para llevar un conteo global real. Cada carga de la página
+   suma 1 al total global y muestra el número actualizado, por lo que refleja
+   las visitas reales de todo el mundo y sube en vivo. Si el servicio falla,
+   se conserva el último valor conocido guardado en el navegador. */
 function initVisitCounter() {
   const cont = document.getElementById("visitCounter");
   if (!cont) return;
@@ -40,11 +41,9 @@ function initVisitCounter() {
     digitos.forEach((d, i) => { d.textContent = s[i]; });
   };
 
+  // Mostrar de inmediato el último valor conocido para que nunca se vea "raro".
   const guardado = localStorage.getItem("pewmaVisitas");
-  if (localStorage.getItem("pewmaVisitaContada") && guardado) {
-    pintar(guardado);
-    return;
-  }
+  if (guardado) pintar(guardado);
 
   fetch(API)
     .then((r) => r.json())
@@ -52,10 +51,9 @@ function initVisitCounter() {
       const n = d && (d.count != null ? d.count : d.value);
       if (n == null) return;
       localStorage.setItem("pewmaVisitas", n);
-      localStorage.setItem("pewmaVisitaContada", "1");
       pintar(n);
     })
-    .catch(() => { if (guardado) pintar(guardado); });
+    .catch(() => { /* si falla, se conserva el valor ya mostrado */ });
 }
 
 /* ---------- Contadores animados de estadísticas ---------- */
@@ -159,10 +157,10 @@ function initI18n() {
     "Momentos que reflejan la magia, el color y la hermandad del Festival Pewma Antü. Haz clic en una foto para verla en grande.": "Moments that reflect the magic, color and fellowship of the Pewma Antü Festival. Click a photo to view it larger.",
     // Campeones
     "🏆 Nuestros campeones": "🏆 Our champions",
-    "Infantil": "Children",
-    "Juvenil": "Youth",
-    "Adulto": "Adult",
-    "Senior": "Senior",
+    "Campeón Infantil": "Children's Champion",
+    "Campeón Juvenil": "Youth Champion",
+    "Campeón Adulto": "Adult Champion",
+    "Campeón Senior": "Senior Champion",
     "1er Campeonato Abierto de Cueca Pewma Antü 2026": "1st Pewma Antü Open Cueca Championship 2026",
     "Un espacio para celebrar a los ganadores de nuestro primer campeonato de cueca, que serán parte de esta gran fiesta cultural.": "A space to celebrate the winners of our first cueca championship, who will be part of this great cultural celebration.",
     "Muy pronto publicaremos aquí las fotos de los campeones.": "We'll soon publish the champions' photos here.",
