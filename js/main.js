@@ -622,6 +622,10 @@ function initScrollReveal() {
     return;
   }
 
+  // Umbral mínimo: basta con que asome un poco del bloque. Con un umbral alto
+  // (ej. 0.15) los bloques muy altos —como la galería apilada en 1 columna en
+  // el celular— nunca lo alcanzan, porque ese 15% supera el alto de la
+  // pantalla, y se quedaban invisibles para siempre.
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
@@ -631,10 +635,17 @@ function initScrollReveal() {
         }
       });
     },
-    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    { threshold: 0.01, rootMargin: "0px 0px -40px 0px" }
   );
 
   elements.forEach((el) => observer.observe(el));
+
+  // Red de seguridad: si por cualquier motivo (navegador interno de una app,
+  // scroll raro) algún bloque no se reveló, mostrarlo igual pasados 3 s.
+  // Vale más ver el contenido sin animación que no verlo.
+  setTimeout(() => {
+    elements.forEach((el) => el.classList.add("is-visible"));
+  }, 3000);
 }
 
 /* ---------- Botón volver arriba ---------- */
