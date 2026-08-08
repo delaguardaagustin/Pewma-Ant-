@@ -49,6 +49,9 @@ body {
 p { text-wrap: pretty; }
 
 img { max-width: 100%; display: block; }
+/* <picture> envuelve cada foto para servir WebP: que no genere caja propia,
+   así la imagen sigue midiendo contra su contenedor real como antes. */
+picture { display: contents; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
