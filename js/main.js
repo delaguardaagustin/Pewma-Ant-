@@ -139,7 +139,7 @@ function initI18n() {
     "Compuesto por Jeremy Armijo": "Composed by Jeremy Armijo",
     "🎧 Escúchanos en Spotify": "🎧 Listen to us on Spotify",
     // Palabras del director
-    "Para Jeremy Armijo, fundador y director del Festival Pewma Antü, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.": "For Jeremy Armijo, founder and director of the Pewma Antü Festival, culture is a bridge that unites people beyond borders. His vision is born from the deep conviction that folklore is a tool to strengthen identity, promote respect for diversity and create spaces of encounter between peoples.",
+    "Para Jeremy Armijo, fundador y director del Festival Pewma Antü — Encuentro de las Estrellas, la cultura es un puente que une a las personas más allá de las fronteras. Su visión nace del profundo convencimiento de que el folclore es una herramienta para fortalecer la identidad, promover el respeto por la diversidad y crear espacios de encuentro entre los pueblos.": "For Jeremy Armijo, founder and director of the Pewma Antü Festival — Gathering of the Stars, culture is a bridge that unites people beyond borders. His vision is born from the deep conviction that folklore is a tool to strengthen identity, promote respect for diversity and create spaces of encounter between peoples.",
     "Bajo este propósito, el Festival Pewma Antü se ha consolidado como un escenario de intercambio cultural donde artistas, delegaciones y comunidades de Chile y el mundo comparten sus tradiciones, historias y expresiones artísticas. Más que un evento, representa un movimiento que impulsa la formación, la integración y el desarrollo cultural, acercando el arte a todos los territorios y fomentando el diálogo intercultural.": "With this purpose, the Pewma Antü Festival has established itself as a stage for cultural exchange where artists, delegations and communities from Chile and the world share their traditions, stories and artistic expressions. More than an event, it represents a movement that drives training, integration and cultural development, bringing art to every territory and fostering intercultural dialogue.",
     "Nuestro sueño es que Pewma Antü continúe creciendo como un referente nacional e internacional, llevando el mensaje de que la cultura, cuando se comparte con respeto y pasión, tiene el poder de transformar comunidades y construir un futuro donde las tradiciones sigan vivas para las nuevas generaciones.": "Our dream is for Pewma Antü to keep growing as a national and international reference, carrying the message that culture, when shared with respect and passion, has the power to transform communities and build a future where traditions stay alive for new generations.",
     // Banda
@@ -152,7 +152,7 @@ function initI18n() {
     // Mapas
     "Pasa el cursor —o toca en el móvil— sobre cada país para ver la agrupación y el año en que participó.": "Hover —or tap on mobile— over each country to see its group and the year it took part.",
     "La ruta del festival · Enero 2027 🇨🇱": "The festival route · January 2027 🇨🇱",
-    "Diez fechas recorriendo las comunas de Chile. Pincha una parada para ver a su agrupación en Instagram.": "Ten dates across the towns of Chile. Tap a stop to see its group on Instagram.",
+    "Diez fechas recorriendo las comunas de Chile. Pincha una parada para ver a su agrupación en Instagram.": "Ten dates across the communes of Chile. Tap a stop to see its group on Instagram.",
     // Galería
     "Momentos que reflejan la magia, el color y la hermandad del Festival Pewma Antü. Haz clic en una foto para verla en grande.": "Moments that reflect the magic, color and fellowship of the Pewma Antü Festival. Click a photo to view it larger.",
     // Campeones
@@ -209,7 +209,7 @@ function initI18n() {
     "Comunas": "Towns",
     "Agrupaciones": "Groups",
     "Asistentes": "Attendees",
-    "🌎 Artistas internacionales": "🌎 International artists",
+    "🌎 Artistas Nacionales e Internacionales": "🌎 National and International Artists",
     "🎟️ Actividades gratuitas": "🎟️ Free activities",
     "🎓 Talleres educativos culturales": "🎓 Cultural educational workshops",
     "¿Quieres sumarte como colaborador y ser parte de esta fiesta cultural?": "Would you like to join as a collaborator and be part of this cultural celebration?",
@@ -349,7 +349,7 @@ function initBackgroundMusic() {
 }
 
 /* ---------- Formulario de reseñas ---------- */
-const WHATSAPP_NUMERO = "56944760296"; // número del festival (formato internacional sin +)
+const WHATSAPP_NUMERO = "56992940843"; // número del festival (formato internacional sin +)
 
 function initReviewForm() {
   const form = document.getElementById("reviewForm");
