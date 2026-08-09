@@ -22,18 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ---------- Contador real de visitas ----------
-   Sitio estático (GitHub Pages) sin backend: usamos CounterAPI (gratuito,
-   sin registro) para llevar un conteo global real. Cada carga de la página
-   suma 1 al total global y muestra el número actualizado, por lo que refleja
-   las visitas reales de todo el mundo y sube en vivo. Si el servicio falla,
-   se conserva el último valor conocido guardado en el navegador. */
+   Sitio estático (GitHub Pages) sin backend: usamos Abacus (gratuito, sin
+   registro) para llevar un conteo global real. Cada carga suma 1 al total y
+   muestra el número actualizado, así que refleja las visitas reales de todo
+   el mundo y sube en vivo. Si el servicio falla, se conserva el último valor
+   conocido guardado en el navegador.
+   Ojo: antes se usaba CounterAPI v1, que el proveedor dio de baja (HTTP 410)
+   y dejó el contador congelado. */
 function initVisitCounter() {
   const cont = document.getElementById("visitCounter");
   if (!cont) return;
   const digitos = cont.querySelectorAll("span");
   if (!digitos.length) return;
 
-  const API = "https://api.counterapi.dev/v1/festival-pewma-antu/visitas/up";
+  const API = "https://abacus.jasoncameron.dev/hit/festivalpewmaantu.cl/visitas";
   const N = digitos.length;
 
   const pintar = (n) => {
@@ -168,8 +170,8 @@ function initI18n() {
     "Noticias destacadas": "Featured News",
     "Ver todas →": "See all →",
     "4º Encuentro Folklórico \"Encuentro de las Estrellas\"": "4th Folklore Gathering \"Gathering of the Stars\"",
-    "5 de septiembre": "September 5",
-    "Este 5 de septiembre celebraremos nuestro 4º encuentro folklórico en la comuna de La Cisterna.": "On September 5 we will hold our 4th folklore gathering in the town of La Cisterna.",
+    "4 de octubre": "October 4",
+    "Este 4 de octubre celebraremos nuestro 4º encuentro folklórico en la comuna de La Cisterna.": "On October 4 we will hold our 4th folklore gathering in the commune of La Cisterna.",
     "1er Campeonato Abierto de Cueca Pewma Antü": "1st Pewma Antü Open Cueca Championship",
     "Abril": "April",
     "Realizamos el 1er campeonato abierto de cueca. Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.": "We held our 1st open cueca championship. Its winners will be part of this cultural celebration, alongside the national and international groups.",
@@ -216,7 +218,7 @@ function initI18n() {
     "Quiero ser colaborador": "I want to collaborate",
     // Modal de noticias
     "📣 Noticias destacadas": "📣 Featured news",
-    "5 de septiembre · La Cisterna": "September 5 · La Cisterna",
+    "4 de octubre · La Cisterna": "October 4 · La Cisterna",
     "Sus ganadores serán parte de esta fiesta cultural, junto a las agrupaciones nacionales e internacionales.": "Its winners will be part of this cultural celebration, alongside the national and international groups.",
     "Convocatoria para agrupaciones 2028": "Applications for 2028 groups",
     "Ya están abiertas las postulaciones para la edición 2028 del Festival Pewma Antü.": "Applications are now open for the 2028 edition of the Pewma Antü Festival.",
