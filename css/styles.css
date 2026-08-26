@@ -144,6 +144,15 @@ button:focus-visible {
   margin-bottom: 1.2rem;
 }
 
+/* Títulos de sección en mayúsculas. Se hace por CSS y no reescribiendo el
+   texto, para que el diccionario de traducciones siga encontrando sus claves.
+   En mayúsculas conviene algo de espaciado: pegadas se leen peor. */
+.section-title--upper,
+.chilemap__title--upper {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
 /* Filete dorado bajo los títulos centrados */
 .section-title--center {
   position: relative;

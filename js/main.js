@@ -137,7 +137,7 @@ function initI18n() {
     "Con los años, el festival se convirtió en un verdadero hogar anual. Inspirados por el espíritu de nuestro himno de Jeremy Armijo, cada edición abrimos las puertas para decir: ¡Bienvenidos, viajeros de corazón! Aquí no hay fronteras ni competencias, solo una gran familia global que se reúne para compartir las risas tras bambalinas, la magia de las raíces y el brillo de cada tradición.": "Over the years, the festival became a true annual home. Inspired by the spirit of our anthem by Jeremy Armijo, each edition we open our doors to say: Welcome, travelers of the heart! Here there are no borders or competitions, only one big global family that gathers to share the laughter backstage, the magic of our roots and the shine of every tradition.",
     // Himno
     "Nuestro himno": "Our anthem",
-    "El Himno Pewma Antü": "The Pewma Antü Anthem",
+    "Himno Pewma Antü": "Pewma Antü Anthem",
     "Compuesto por Jeremy Armijo": "Composed by Jeremy Armijo",
     "🎧 Escúchanos en Spotify": "🎧 Listen to us on Spotify",
     // Palabras del director
